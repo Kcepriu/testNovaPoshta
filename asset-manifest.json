@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/testNovaPoshta/static/css/main.48517ac5.css",
+    "main.js": "/testNovaPoshta/static/js/main.1c37b54a.js",
+    "index.html": "/testNovaPoshta/index.html",
+    "main.48517ac5.css.map": "/testNovaPoshta/static/css/main.48517ac5.css.map",
+    "main.1c37b54a.js.map": "/testNovaPoshta/static/js/main.1c37b54a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.48517ac5.css",
+    "static/js/main.1c37b54a.js"
+  ]
+}
