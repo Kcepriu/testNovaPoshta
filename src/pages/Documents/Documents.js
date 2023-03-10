@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import GetInformationDocument from 'components/GetInformationDocument/GetInformationDocument';
+import SearchTTN from 'components/SearchTTN/SearchTTN';
 import HistoryDocuments from 'components/HistoryDocuments/HistoryDocuments';
 import StatusDocument from 'components/StatusDocument/StatusDocument';
 import Loader from 'components/Loader/Loader';
@@ -10,18 +10,12 @@ import WarningInformation from 'components/WarningInformation/WarningInformation
 const Documents = () => {
   //number TTN for serch
   const [numberTTN, setNumberTTN] = useState('');
-
-  //Number active TTN
-  const [activeTTN, setActiveTTN] = useState('');
-
+  const [loadInformation, setLoadInformation] = useState(false);
   // History found TTN
   const [historyTTN, setHistoryTTN] = useState([]);
 
   // Information ALL TTN
-  const [informationAllTTN, setInformationAllTTN] = useState({});
-
-  // Information actibe TTN
-  const [informationActiveTTN, setInformationActiveTTN] = useState('');
+  const [informationTTN, setInformationTTN] = useState('');
 
   //Information about fetch information
   const [warning, setWarning] = useState('');
@@ -31,9 +25,13 @@ const Documents = () => {
 
   useEffect(() => {
     setWarning('');
-    setActiveTTN('');
-    setInformationActiveTTN('');
+    setInformationTTN('');
 
+    if (!loadInformation) {
+      return;
+    }
+
+    setLoadInformation(false);
     if (numberTTN === '') {
       return;
     }
@@ -41,7 +39,10 @@ const Documents = () => {
     const controller = new AbortController();
 
     async function fetchInformation() {
+      console.log('fetchInformation', Date.now());
+
       setShowLoad(true);
+
       try {
         const { data: respond } = await fetchInformationDocument(
           controller,
@@ -57,12 +58,11 @@ const Documents = () => {
         }
 
         setHistoryTTN(prev => {
+          if (prev.includes(numberTTN)) return [...prev];
           return [...prev, numberTTN];
         });
-        setActiveTTN(numberTTN);
-        setInformationAllTTN(prev => {
-          return { ...prev, [numberTTN]: respond.data[0] };
-        });
+
+        setInformationTTN(respond.data[0]);
         // CAtch
       } catch (Error) {
         setWarning('The service is not available');
@@ -72,54 +72,39 @@ const Documents = () => {
       }
     }
 
-    // ! 1. Якщо така ТТН є в хісторі то просто активувати її інакше фетчимо інформацію
-    if (informationAllTTN[numberTTN]) {
-      console.log('setActiveTTN', numberTTN);
-
-      setActiveTTN(numberTTN);
-    } else {
-      fetchInformation();
-    }
-  }, [numberTTN, informationAllTTN]);
-
-  useEffect(() => {
-    if (!activeTTN) {
-      setInformationActiveTTN('');
-      return;
-    }
-
-    setInformationActiveTTN(informationAllTTN[activeTTN]);
-  }, [activeTTN, informationAllTTN]);
-  // 20450669024794
+    fetchInformation();
+  }, [numberTTN, loadInformation]);
 
   const handlerSubmitForm = event => {
     event.preventDefault();
-    const form = event.target;
-    const numberTTN = form.elements.numberTTN.value;
-    setNumberTTN(numberTTN);
-    form.reset();
+    setLoadInformation(true);
   };
 
   const handlerClickItemHistory = number => {
-    setActiveTTN(number);
+    setNumberTTN(number);
+    setLoadInformation(true);
   };
 
   return (
     <>
       <p>20450669024794</p>
-      <GetInformationDocument handlerSubmitForm={handlerSubmitForm} />
+
+      <SearchTTN
+        numberTTN={numberTTN}
+        setNumberTTN={setNumberTTN}
+        handlerSubmitForm={handlerSubmitForm}
+      />
+
       {warning.length > 0 && <WarningInformation information={warning} />}
       {showLoad && <Loader />}
+
       {historyTTN.length > 0 && (
         <HistoryDocuments
           historyTTN={historyTTN}
-          activeTTN={activeTTN}
           handlerOnClick={handlerClickItemHistory}
         />
       )}
-      {informationActiveTTN && (
-        <StatusDocument informationTTN={informationActiveTTN} />
-      )}
+      {informationTTN && <StatusDocument informationTTN={informationTTN} />}
     </>
   );
 };

@@ -23,7 +23,6 @@ const HistoryDocuments = ({ historyTTN, activeTTN, handlerOnClick }) => {
 
 HistoryDocuments.propTypes = {
   historyTTN: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  activeTTN: PropTypes.string.isRequired,
   handlerOnClick: PropTypes.func.isRequired,
 };
 
