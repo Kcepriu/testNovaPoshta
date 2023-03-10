@@ -16,8 +16,6 @@ const initialHistory = [];
 // ];
 
 const useHistory = () => {
-  console.log(loadFromLocalStorage(NAME_LOCALSTORAGE, initialHistory));
-
   const [historyTTN, setHistoryTTN] = useState(() =>
     loadFromLocalStorage(NAME_LOCALSTORAGE, initialHistory)
   );

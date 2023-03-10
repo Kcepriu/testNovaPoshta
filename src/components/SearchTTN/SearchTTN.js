@@ -21,7 +21,6 @@ const SearchTTN = ({ numberTTN, setNumberTTN, handlerSubmitForm }) => {
         />
 
         <Buttom type="submit">Отримати статус</Buttom>
-        <p>20450669024794</p>
       </Form>
     </>
   );
