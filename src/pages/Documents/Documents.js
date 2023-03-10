@@ -75,6 +75,8 @@ const Documents = () => {
     fetchInformation();
   }, [numberTTN, loadInformation, setHistoryTTN]);
 
+  // * Handlers
+
   const handlerSubmitForm = event => {
     event.preventDefault();
     setLoadInformation(true);
@@ -90,6 +92,7 @@ const Documents = () => {
     setHistoryTTN([]);
   };
 
+  // * Returns
   return (
     <>
       <SearchTTN
