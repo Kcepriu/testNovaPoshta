@@ -34,6 +34,9 @@ const Documents = () => {
     }
 
     setLoadInformation(false);
+
+    console.log('setLoadInformation', Date.now());
+
     if (numberTTN === '') {
       return;
     }
@@ -44,16 +47,15 @@ const Documents = () => {
       setShowLoad(true);
 
       try {
-        const { data: respond } = await fetchInformationDocument(
+        const { data: response } = await fetchInformationDocument(
           controller,
           numberTTN
         );
 
         //!Треба дивитися чи знайшов документ. Якщо ні, то ругнутися і не додавати в історію
-
         // Error
-        if (!respond.success) {
-          setWarning(respond.errors[0]);
+        if (!response.success) {
+          setWarning(response.errors[0]);
           return;
         }
 
@@ -62,7 +64,7 @@ const Documents = () => {
           return [numberTTN, ...prev];
         });
 
-        setInformationTTN(respond.data[0]);
+        setInformationTTN(response.data[0]);
         // CAtch
       } catch (Error) {
         setWarning('The service is not available');
@@ -73,6 +75,10 @@ const Documents = () => {
     }
 
     fetchInformation();
+
+    // return () => {
+    //   controller.abort();
+    // };
   }, [numberTTN, loadInformation, setHistoryTTN]);
 
   // * Handlers
