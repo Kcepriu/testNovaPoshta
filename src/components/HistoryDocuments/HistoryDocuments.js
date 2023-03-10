@@ -1,12 +1,23 @@
 import PropTypes from 'prop-types';
-import { WrapHistoryDocuments, List, Item } from './HistoryDocuments.styled';
+import {
+  WrapHistoryDocuments,
+  List,
+  Item,
+  Button,
+} from './HistoryDocuments.styled';
+import { AiOutlineClear } from 'react-icons/ai';
 
-const HistoryDocuments = ({ historyTTN, activeTTN, handlerOnClick }) => {
+const HistoryDocuments = ({
+  historyTTN,
+  activeTTN,
+  handlerOnClick,
+  handlerClearHistory,
+}) => {
   return (
     <WrapHistoryDocuments>
+      <h2>Історія</h2>
       {historyTTN.length > 0 && (
         <>
-          <h2>Історія</h2>
           <List>
             {historyTTN.map(number => {
               return (
@@ -20,6 +31,9 @@ const HistoryDocuments = ({ historyTTN, activeTTN, handlerOnClick }) => {
               );
             })}
           </List>
+          <Button type="buttom" onClick={handlerClearHistory}>
+            <AiOutlineClear size="16" />
+          </Button>
         </>
       )}
     </WrapHistoryDocuments>
@@ -29,6 +43,7 @@ const HistoryDocuments = ({ historyTTN, activeTTN, handlerOnClick }) => {
 HistoryDocuments.propTypes = {
   historyTTN: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   handlerOnClick: PropTypes.func.isRequired,
+  handlerClearHistory: PropTypes.func.isRequired,
 };
 
 export default HistoryDocuments;

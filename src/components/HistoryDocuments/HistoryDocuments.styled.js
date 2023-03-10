@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const WrapHistoryDocuments = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -30,5 +31,21 @@ export const Item = styled.li`
   &.Active {
     font-weight: bold;
     cursor: auto;
+  }
+`;
+
+export const Button = styled.button`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 1px;
+  background-color: transparent;
+  cursor: pointer;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  &:hover {
+    background-color: gray;
   }
 `;

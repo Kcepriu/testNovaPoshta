@@ -93,6 +93,10 @@ const Documents = () => {
     setLoadInformation(true);
   };
 
+  const handlerClearHistory = () => {
+    setHistoryTTN([]);
+  };
+
   return (
     <>
       <SearchTTN
@@ -109,6 +113,7 @@ const Documents = () => {
           historyTTN={historyTTN}
           activeTTN={numberTTN}
           handlerOnClick={handlerClickItemHistory}
+          handlerClearHistory={handlerClearHistory}
         />
       </WrapInformation>
       {showLoad && <Spinner />}
