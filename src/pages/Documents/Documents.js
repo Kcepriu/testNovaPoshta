@@ -10,13 +10,12 @@ import WarningInformation from 'components/WarningInformation/WarningInformation
 const Documents = () => {
   //number TTN for serch
   const [numberTTN, setNumberTTN] = useState('');
+  //Flag to loading info
   const [loadInformation, setLoadInformation] = useState(false);
   // History found TTN
   const [historyTTN, setHistoryTTN] = useState([]);
-
   // Information ALL TTN
   const [informationTTN, setInformationTTN] = useState('');
-
   //Information about fetch information
   const [warning, setWarning] = useState('');
 
