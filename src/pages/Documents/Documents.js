@@ -6,6 +6,7 @@ import StatusDocument from 'components/StatusDocument/StatusDocument';
 import { fetchInformationDocument } from 'servises/apiNovaPoshta';
 import WarningInformation from 'components/WarningInformation/WarningInformation';
 import Spinner from 'components/Spinner/Spinner';
+import { WrapInformation } from './Documents.styled';
 
 const Documents = () => {
   //number TTN for serch
@@ -13,7 +14,16 @@ const Documents = () => {
   //Flag to loading info
   const [loadInformation, setLoadInformation] = useState(false);
   // History found TTN
-  const [historyTTN, setHistoryTTN] = useState([]);
+  const [historyTTN, setHistoryTTN] = useState([
+    '20450669024794',
+    '20450669024700',
+    '20450669024702',
+    '20450669024703',
+    '20450669024704',
+    '20450669024705',
+    '20450669024706',
+    '20450669024707',
+  ]);
   // Information ALL TTN
   const [informationTTN, setInformationTTN] = useState('');
   //Information about fetch information
@@ -38,8 +48,6 @@ const Documents = () => {
     const controller = new AbortController();
 
     async function fetchInformation() {
-      console.log('fetchInformation', Date.now());
-
       setShowLoad(true);
 
       try {
@@ -58,7 +66,7 @@ const Documents = () => {
 
         setHistoryTTN(prev => {
           if (prev.includes(numberTTN)) return [...prev];
-          return [...prev, numberTTN];
+          return [numberTTN, ...prev];
         });
 
         setInformationTTN(respond.data[0]);
@@ -95,15 +103,15 @@ const Documents = () => {
 
       <WarningInformation information={warning} />
 
-      {showLoad && <Spinner />}
-
-      {historyTTN.length > 0 && (
+      <WrapInformation>
+        <StatusDocument informationTTN={informationTTN} />
         <HistoryDocuments
           historyTTN={historyTTN}
+          activeTTN={numberTTN}
           handlerOnClick={handlerClickItemHistory}
         />
-      )}
-      {informationTTN && <StatusDocument informationTTN={informationTTN} />}
+      </WrapInformation>
+      {showLoad && <Spinner />}
     </>
   );
 };
