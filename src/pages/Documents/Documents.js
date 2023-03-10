@@ -7,6 +7,7 @@ import { fetchInformationDocument } from 'servises/apiNovaPoshta';
 import WarningInformation from 'components/WarningInformation/WarningInformation';
 import Spinner from 'components/Spinner/Spinner';
 import { WrapInformation } from './Documents.styled';
+import useHistory from 'hooks/useHistory';
 
 const Documents = () => {
   //number TTN for serch
@@ -14,16 +15,8 @@ const Documents = () => {
   //Flag to loading info
   const [loadInformation, setLoadInformation] = useState(false);
   // History found TTN
-  const [historyTTN, setHistoryTTN] = useState([
-    '20450669024794',
-    '20450669024700',
-    '20450669024702',
-    '20450669024703',
-    '20450669024704',
-    '20450669024705',
-    '20450669024706',
-    '20450669024707',
-  ]);
+  const [historyTTN, setHistoryTTN] = useHistory();
+
   // Information ALL TTN
   const [informationTTN, setInformationTTN] = useState('');
   //Information about fetch information
@@ -80,7 +73,7 @@ const Documents = () => {
     }
 
     fetchInformation();
-  }, [numberTTN, loadInformation]);
+  }, [numberTTN, loadInformation, setHistoryTTN]);
 
   const handlerSubmitForm = event => {
     event.preventDefault();
