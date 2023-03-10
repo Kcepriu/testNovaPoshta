@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import SearchTTN from 'components/SearchTTN/SearchTTN';
 import HistoryDocuments from 'components/HistoryDocuments/HistoryDocuments';
 import StatusDocument from 'components/StatusDocument/StatusDocument';
-import Loader from 'components/Loader/Loader';
 import { fetchInformationDocument } from 'servises/apiNovaPoshta';
 import WarningInformation from 'components/WarningInformation/WarningInformation';
+import Spinner from 'components/Spinner/Spinner';
 
 const Documents = () => {
   //number TTN for serch
@@ -80,22 +80,22 @@ const Documents = () => {
   };
 
   const handlerClickItemHistory = number => {
+    if (numberTTN === number) return;
     setNumberTTN(number);
     setLoadInformation(true);
   };
 
   return (
     <>
-      <p>20450669024794</p>
-
       <SearchTTN
         numberTTN={numberTTN}
         setNumberTTN={setNumberTTN}
         handlerSubmitForm={handlerSubmitForm}
       />
 
-      {warning.length > 0 && <WarningInformation information={warning} />}
-      {showLoad && <Loader />}
+      <WarningInformation information={warning} />
+
+      {showLoad && <Spinner />}
 
       {historyTTN.length > 0 && (
         <HistoryDocuments

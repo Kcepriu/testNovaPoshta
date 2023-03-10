@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Form, Buttom, Input } from './SearchTTN.styled';
 
 const SearchTTN = ({ numberTTN, setNumberTTN, handlerSubmitForm }) => {
   const handlerChangeInput = evn => {
@@ -7,19 +8,21 @@ const SearchTTN = ({ numberTTN, setNumberTTN, handlerSubmitForm }) => {
 
   return (
     <>
-      <form onSubmit={handlerSubmitForm}>
-        <input
+      <h2>Пошук накладної</h2>
+      <Form onSubmit={handlerSubmitForm}>
+        <Input
           name="numberTTN"
           type="text"
           autoComplete="on"
           autoFocus
-          placeholder="Input number TTN"
+          placeholder="Введіть номер ТТН"
           value={numberTTN}
           onChange={handlerChangeInput}
         />
 
-        <button type="submit">Get status TTN</button>
-      </form>
+        <Buttom type="submit">Отримати статус</Buttom>
+        <p>20450669024794</p>
+      </Form>
     </>
   );
 };

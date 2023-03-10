@@ -1,8 +1,12 @@
 import PropTypes from 'prop-types';
-import { Warning } from './WarningInformation.styled';
+import { Warning, WrapWarning } from './WarningInformation.styled';
 
 const WarningInformation = ({ information }) => {
-  return <Warning>{information}</Warning>;
+  return (
+    <WrapWarning>
+      <Warning>{information}</Warning>
+    </WrapWarning>
+  );
 };
 
 WarningInformation.propTypes = {

@@ -4,6 +4,7 @@ import * as Style from 'helpers/constatStyle';
 
 export const Head = styled.div`
   box-shadow: 0px 3px 10px 5px rgba(135, 124, 124, 0.75);
+  margin-bottom: 10px;
 `;
 
 export const Container = styled.div`
