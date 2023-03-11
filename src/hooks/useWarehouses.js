@@ -13,6 +13,8 @@ const useWarehouses = () => {
 
   const [activeFilter, setActiveFilter] = useState('');
 
+  const [nameSearchWarehouses, setNameSearchWarehouses] = useState('');
+
   useEffect(() => {
     //При зміні city  знайти список точок відправлення
     if (!selectedCity) {
@@ -31,6 +33,7 @@ const useWarehouses = () => {
           cityRef: selectedCity.ref,
           typeOfWarehouseRef: activeFilter,
           page: curentPage,
+          searchText: nameSearchWarehouses,
         });
 
         if (!response?.success) {
@@ -58,7 +61,7 @@ const useWarehouses = () => {
     return () => {
       controller.abort();
     };
-  }, [selectedCity, activeFilter, curentPage]);
+  }, [selectedCity, activeFilter, curentPage, nameSearchWarehouses]);
 
   return [
     selectedCity,
@@ -69,6 +72,7 @@ const useWarehouses = () => {
     setCurentPage,
     setSelectedCity,
     setActiveFilter,
+    setNameSearchWarehouses,
   ];
 };
 

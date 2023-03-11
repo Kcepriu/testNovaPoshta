@@ -6,6 +6,8 @@ import Pagination from 'components/Pagination/Paginnation';
 import Spinner from 'components/Spinner/Spinner';
 import useFilter from 'hooks/useFilter';
 import useWarehouses from 'hooks/useWarehouses';
+import SearchWarehouses from 'components/SearchWarehouses/SearchWarehouses';
+import { useEffect, useState } from 'react';
 
 const Warehouses = () => {
   const [filters, activeFilter, isLoaderFilter, setActiveFilter] = useFilter();
@@ -18,12 +20,17 @@ const Warehouses = () => {
     setCurentPage,
     setSelectedCity,
     setFilter,
+    setNameSearchWarehouses,
   ] = useWarehouses();
+
+  const [searchText, setSearchText] = useState('');
 
   //* Handlers
 
   const handlerChoiceCity = city => {
     setSelectedCity(city);
+    setSearchText('');
+    setNameSearchWarehouses('');
   };
 
   const handlerChoiceFilter = ref => {
@@ -38,7 +45,17 @@ const Warehouses = () => {
   return (
     <>
       <h2>Список відділень міста:</h2>
+
       <City city={selectedCity} handlerChoiceCity={handlerChoiceCity} />
+
+      {selectedCity && (
+        <SearchWarehouses
+          searchText={searchText}
+          handlerChangeText={setSearchText}
+          setNameSearchWarehouses={setNameSearchWarehouses}
+        />
+      )}
+
       {filters.length > 0 && (
         <FilterWarehouses
           filters={filters}

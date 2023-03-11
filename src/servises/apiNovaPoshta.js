@@ -33,17 +33,25 @@ const getRequestSearchCity = nameCity => {
   };
 };
 
-const getRequestSearchWarehouse = (cityRef, typeOfWarehouseRef, page) => {
+const getRequestSearchWarehouse = (
+  cityRef,
+  typeOfWarehouseRef,
+  page,
+  searchText
+) => {
   return {
     apiKey: KEY,
     modelName: 'Address',
     calledMethod: 'getWarehouses',
     methodProperties: {
       CityRef: cityRef,
-      Page: '1',
+
+      Page: page,
       Limit: PAGE_FROM_REQUEST,
+      // Limit: 5000,
       Language: 'UA',
       TypeOfWarehouseRef: typeOfWarehouseRef,
+      FindByString: searchText,
       // WarehouseId: '',
     },
   };
@@ -84,10 +92,11 @@ export async function fetchWarehouses({
   cityRef,
   typeOfWarehouseRef = '',
   page = 1,
+  searchText = '',
 }) {
   const result = await axios.post(
     URL,
-    getRequestSearchWarehouse(cityRef, typeOfWarehouseRef, page),
+    getRequestSearchWarehouse(cityRef, typeOfWarehouseRef, page, searchText),
     {
       signal: controller.signal,
     }
