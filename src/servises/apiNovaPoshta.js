@@ -32,6 +32,22 @@ const getRequestSearchCity = nameCity => {
   };
 };
 
+const getRequestSearchWarehouse = (cityRef, typeOfWarehouseRef, page) => {
+  return {
+    apiKey: KEY,
+    modelName: 'Address',
+    calledMethod: 'getWarehouses',
+    methodProperties: {
+      CityRef: cityRef,
+      Page: '1',
+      Limit: '50',
+      Language: 'UA',
+      // TypeOfWarehouseRef: typeOfWarehouseRef,
+      // WarehouseId: '',
+    },
+  };
+};
+
 export async function fetchInformationDocument(controller, numberDocument) {
   const result = await axios.post(
     URL,
@@ -48,6 +64,23 @@ export async function searchCity(controller, nameCity) {
   const result = await axios.post(URL, getRequestSearchCity(nameCity), {
     signal: controller.signal,
   });
+
+  return result;
+}
+
+export async function fetchWarehouses({
+  controller,
+  cityRef,
+  typeOfWarehouseRef = '',
+  page = 1,
+}) {
+  const result = await axios.post(
+    URL,
+    getRequestSearchWarehouse(cityRef, typeOfWarehouseRef, page),
+    {
+      signal: controller.signal,
+    }
+  );
 
   return result;
 }

@@ -10,6 +10,7 @@ const useSearchCity = () => {
     setFoundCities([]);
 
     if (!nameCity) return;
+
     const controller = new AbortController();
 
     async function fetchSearchCity() {

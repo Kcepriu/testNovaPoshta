@@ -35,8 +35,6 @@ const Documents = () => {
 
     setLoadInformation(false);
 
-    console.log('setLoadInformation', Date.now());
-
     if (numberTTN === '') {
       return;
     }

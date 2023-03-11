@@ -3,13 +3,11 @@ import ItemFoundCities from 'components/ItemFoundCities/ItemFoundCities';
 import { List } from './FoundCities.styled';
 
 const FoundCities = ({ foundCities, handlerChoiceCity }) => {
-  console.log('foundCities', foundCities);
-
   return (
     <List>
-      {foundCities.map(({ Ref, Present }) => {
+      {foundCities.map(({ Ref, DeliveryCity, Present }) => {
         const city = {
-          ref: Ref,
+          ref: DeliveryCity,
           name: Present,
         };
 
@@ -29,6 +27,7 @@ FoundCities.propTypes = {
   foundCities: PropTypes.arrayOf(
     PropTypes.shape({
       Ref: PropTypes.string.isRequired,
+      DeliveryCity: PropTypes.string.isRequired,
       Present: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
