@@ -6,3 +6,12 @@ export const WrapSearchCity = styled.div`
   border: 1px solid green;
   padding: 8px;
 `;
+
+export const Label = styled.label`
+  margin-top: 5px;
+`;
+
+export const Input = styled.input`
+  margin-left: 10px;
+  padding: 3px;
+`;

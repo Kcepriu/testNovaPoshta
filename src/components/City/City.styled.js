@@ -2,12 +2,13 @@ import styled from 'styled-components';
 
 export const WrapCity = styled.div`
   position: relative;
+  margin-top: 10px;
 `;
 
-export const DescriptionCity = styled.div`
+export const WrapDescriptionCity = styled.div`
   display: blok;
   width: 50%;
-  border: 1px solid green;
+  /* border: 1px solid green; */
   padding: 8px;
 `;
 

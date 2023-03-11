@@ -13,7 +13,7 @@ const Warehouses = () => {
   //При зміні city  знайти список точок відправлення
   return (
     <>
-      <p>Warehouses</p>
+      <h2>Список відділень міста:</h2>
       <City city={selectedCity} handlerChoiceCity={handlerChoiceCity} />
       <FilterWarehouses />
       <ListWarehouses />

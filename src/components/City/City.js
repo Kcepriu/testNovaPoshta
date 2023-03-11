@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import SearchCity from 'components/SearchCity/SearchCity';
-
-import { WrapCity, DescriptionCity, WrapSearchCity } from './City.styled';
+import DescriptionCity from 'components/DescriptionCity/DescriptionCity';
+import { WrapCity, WrapSearchCity, WrapDescriptionCity } from './City.styled';
 
 const City = ({ city, handlerChoiceCity }) => {
   const [isSearch, setIsSearch] = useState(false);
@@ -19,17 +19,16 @@ const City = ({ city, handlerChoiceCity }) => {
     handlerChoiceCity(city);
   };
 
-  const cityName = city ? city.name : 'Натисніть щоб вибрати місто';
   return (
     <WrapCity>
-      <DescriptionCity id="descriptionCity" onClick={handlerStatusIsSearch}>
-        <p>{cityName}</p>
-      </DescriptionCity>
+      <WrapDescriptionCity id="descriptionCity" onClick={handlerStatusIsSearch}>
+        <DescriptionCity descriptionCity={city ? city.name : ''} />
+      </WrapDescriptionCity>
 
       {isSearch && (
         <WrapSearchCity id="searchCity">
           <SearchCity
-            descriptionCity={cityName}
+            descriptionCity={city ? city.name : ''}
             handlerCloseSearch={handlerStatusIsSearch}
             handlerChoiceCity={choiceCity}
           />

@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
-
 import { useDebouncedCallback } from 'use-debounce';
 import { searchCity } from 'servises/apiNovaPoshta';
-
-import { WrapSearchCity } from './SearchCity.styled';
 import FoundCities from 'components/FoundCities/FoundCities';
 import Loader from 'components/Loader/Loader';
+import DescriptionCity from 'components/DescriptionCity/DescriptionCity';
+import { WrapSearchCity, Label, Input } from './SearchCity.styled';
 
 const SearchCity = ({
   descriptionCity,
@@ -77,20 +76,21 @@ const SearchCity = ({
 
   return (
     <WrapSearchCity>
-      <p>{descriptionCity}</p>
-      <form>
-        <label>
-          Введіть місто
-          <input
-            name="nameCity"
-            type="text"
-            autoComplete="off"
-            autoFocus
-            placeholder="Назва міста"
-            onChange={e => debouncedChangeCity(e.target.value)}
-          />
-        </label>
-      </form>
+      <DescriptionCity
+        descriptionCity={descriptionCity}
+        showOtherText={false}
+      />
+      <Label>
+        Введіть місто:
+        <Input
+          name="nameCity"
+          type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder="Назва міста"
+          onChange={e => debouncedChangeCity(e.target.value)}
+        />
+      </Label>
       {isLoader && <Loader />}
       {!isLoader && foundCities.length > 0 && (
         <FoundCities
