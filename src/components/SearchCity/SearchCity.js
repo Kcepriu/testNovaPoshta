@@ -4,28 +4,61 @@ import { useEffect, useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
 import { searchCity } from 'servises/apiNovaPoshta';
 
-const SearchCity = ({ handlerFoundCity }) => {
-  const [nameCity, setNameCity] = useState('');
+import { WrapSearchCity } from './SearchCity.styled';
+import FoundCities from 'components/FoundCities/FoundCities';
+import Loader from 'components/Loader/Loader';
 
-  const [isSearch, setIsSearch] = useState(false);
+const SearchCity = ({
+  descriptionCity,
+  handlerCloseSearch,
+  handlerChoiceCity,
+}) => {
+  const [nameCity, setNameCity] = useState('');
+  const [foundCities, setFoundCities] = useState([]);
+  const [isLoader, setIsLoader] = useState(false);
 
   useEffect(() => {
-    console.log('nameCityFromSearch', Date.now());
+    //For close this element
+    const handlerKeyDownESC = event => {
+      // key press esc Close modal
+      if (event.key === 'Escape') handlerCloseSearch(false);
+    };
+
+    const handlerClickBody = event => {
+      if (event.target.closest('#descriptionCity')) return;
+      if (event.target.closest('#searchCity')) return;
+      handlerCloseSearch(false);
+    };
+
+    window.addEventListener('keydown', handlerKeyDownESC);
+    document.body.addEventListener('click', handlerClickBody);
+
+    return () => {
+      window.removeEventListener('keydown', handlerKeyDownESC);
+      document.body.removeEventListener('click', handlerClickBody);
+    };
+  }, [handlerCloseSearch]);
+
+  useEffect(() => {
+    setFoundCities([]);
 
     if (!nameCity) return;
     const controller = new AbortController();
 
     async function fetchSearchCity() {
+      setIsLoader(true);
       try {
         const { data: response } = await searchCity(controller, nameCity);
 
         if (!response?.success) {
-          handlerFoundCity([]);
+          setFoundCities([]);
           return;
         }
-        handlerFoundCity(response.data[0].Addresses);
+        setFoundCities(response.data[0].Addresses);
       } catch (Error) {
         console.log('Error fetch foud city', Error);
+      } finally {
+        setIsLoader(false);
       }
     }
 
@@ -34,18 +67,17 @@ const SearchCity = ({ handlerFoundCity }) => {
     return () => {
       controller.abort();
     };
-  }, [nameCity, handlerFoundCity]);
+  }, [nameCity]);
+
+  // * Handlers
 
   const debouncedChangeCity = useDebouncedCallback(value => {
     setNameCity(value);
   }, 1000);
 
-  const toogleIsSearch = () => {
-    setIsSearch(prev => !prev);
-  };
-
   return (
-    <>
+    <WrapSearchCity>
+      <p>{descriptionCity}</p>
       <form>
         <label>
           Введіть місто
@@ -59,27 +91,21 @@ const SearchCity = ({ handlerFoundCity }) => {
           />
         </label>
       </form>
-
-      <p>Місто</p>
-      <div>
-        <div onClick={toogleIsSearch}>Отут буде назва міста</div>
-        {isSearch && (
-          <>
-            <p>Рядок пошуку міста</p>
-            <ul>
-              <li>Місто 1</li>
-              <li>Місто 2</li>
-              <li>Місто 3</li>
-              <li>Місто 4</li>
-            </ul>
-          </>
-        )}
-      </div>
-    </>
+      {isLoader && <Loader />}
+      {!isLoader && foundCities.length > 0 && (
+        <FoundCities
+          foundCities={foundCities}
+          handlerChoiceCity={handlerChoiceCity}
+        />
+      )}
+    </WrapSearchCity>
   );
 };
+
 SearchCity.propTypes = {
-  handlerFoundCity: PropTypes.func.isRequired,
+  descriptionCity: PropTypes.string.isRequired,
+  handlerCloseSearch: PropTypes.func.isRequired,
+  handlerChoiceCity: PropTypes.func.isRequired,
 };
 
 export default SearchCity;
