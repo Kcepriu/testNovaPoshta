@@ -1,72 +1,24 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
-import { searchCity } from 'servises/apiNovaPoshta';
 import FoundCities from 'components/FoundCities/FoundCities';
 import Loader from 'components/Loader/Loader';
 import DescriptionCity from 'components/DescriptionCity/DescriptionCity';
 import { WrapSearchCity, Label, Input } from './SearchCity.styled';
+import useSearchCity from 'hooks/useSearchCity';
+import useCloseSearchCityElement from 'hooks/useCloseSearchCityElement';
 
 const SearchCity = ({
   descriptionCity,
   handlerCloseSearch,
   handlerChoiceCity,
 }) => {
-  const [nameCity, setNameCity] = useState('');
-  const [foundCities, setFoundCities] = useState([]);
-  const [isLoader, setIsLoader] = useState(false);
+  const [foundCities, isLoader, setNameCity] = useSearchCity();
+  const [isCloseSearch] = useCloseSearchCityElement();
 
   useEffect(() => {
-    //For close this element
-    const handlerKeyDownESC = event => {
-      // key press esc Close modal
-      if (event.key === 'Escape') handlerCloseSearch(false);
-    };
-
-    const handlerClickBody = event => {
-      if (event.target.closest('#descriptionCity')) return;
-      if (event.target.closest('#searchCity')) return;
-      handlerCloseSearch(false);
-    };
-
-    window.addEventListener('keydown', handlerKeyDownESC);
-    document.body.addEventListener('click', handlerClickBody);
-
-    return () => {
-      window.removeEventListener('keydown', handlerKeyDownESC);
-      document.body.removeEventListener('click', handlerClickBody);
-    };
-  }, [handlerCloseSearch]);
-
-  useEffect(() => {
-    setFoundCities([]);
-
-    if (!nameCity) return;
-    const controller = new AbortController();
-
-    async function fetchSearchCity() {
-      setIsLoader(true);
-      try {
-        const { data: response } = await searchCity(controller, nameCity);
-
-        if (!response?.success) {
-          setFoundCities([]);
-          return;
-        }
-        setFoundCities(response.data[0].Addresses);
-      } catch (Error) {
-        console.log('Error fetch foud city', Error);
-      } finally {
-        setIsLoader(false);
-      }
-    }
-
-    fetchSearchCity();
-
-    return () => {
-      controller.abort();
-    };
-  }, [nameCity]);
+    if (isCloseSearch) handlerCloseSearch(false);
+  }, [isCloseSearch, handlerCloseSearch]);
 
   // * Handlers
 

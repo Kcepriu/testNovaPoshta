@@ -10,6 +10,7 @@ export const WrapDescriptionCity = styled.div`
   width: 50%;
   /* border: 1px solid green; */
   padding: 8px;
+  cursor: pointer;
 `;
 
 export const WrapSearchCity = styled.div`
