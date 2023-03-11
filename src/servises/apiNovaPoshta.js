@@ -42,11 +42,21 @@ const getRequestSearchWarehouse = (cityRef, typeOfWarehouseRef, page) => {
       Page: '1',
       Limit: '50',
       Language: 'UA',
-      // TypeOfWarehouseRef: typeOfWarehouseRef,
+      TypeOfWarehouseRef: typeOfWarehouseRef,
       // WarehouseId: '',
     },
   };
 };
+
+const getRequestWarehouseTypes = () => {
+  return {
+    apiKey: KEY,
+    modelName: 'Address',
+    calledMethod: 'getWarehouseTypes',
+    methodProperties: {},
+  };
+};
+//getWarehouseTypes
 
 export async function fetchInformationDocument(controller, numberDocument) {
   const result = await axios.post(
@@ -81,6 +91,14 @@ export async function fetchWarehouses({
       signal: controller.signal,
     }
   );
+
+  return result;
+}
+
+export async function getWarehouseTypes(controller) {
+  const result = await axios.post(URL, getRequestWarehouseTypes(), {
+    signal: controller.signal,
+  });
 
   return result;
 }

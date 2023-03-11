@@ -13,7 +13,9 @@ export const ItemFilter = styled.li`
   border-radius: 10px;
   padding: 4px 4px;
   cursor: pointer;
-  &:hover {
+
+  &:hover,
+  &.Active {
     background-color: azure;
   }
 `;
