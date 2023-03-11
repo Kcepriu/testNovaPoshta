@@ -6,6 +6,9 @@ const SearchTTN = ({ numberTTN, setNumberTTN, handlerSubmitForm }) => {
     setNumberTTN(evn.target.value);
   };
 
+  //^\d{14}$
+  //^[A-Z]{4}\d{10}[A-Z]{3}$
+
   return (
     <>
       <h2>Пошук накладної</h2>

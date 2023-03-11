@@ -4,8 +4,8 @@ import { List } from './ListWarehouses.styled';
 const ListWarehouses = ({ foundWarehouses }) => {
   return (
     <List>
-      {foundWarehouses.map((element, index) => {
-        return <ItemWarehouses key={index} description={element.Description} />;
+      {foundWarehouses.map((warehouse, index) => {
+        return <ItemWarehouses key={warehouse.Ref} warehouse={warehouse} />;
       })}
     </List>
   );
