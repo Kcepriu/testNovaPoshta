@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { PAGE_FROM_REQUEST } from 'helpers/constants';
 
 const KEY = '3b13b4f3bbf7d62fa77c4bcdea3099c7';
 const URL = 'https://api.novaposhta.ua/v2.0/json/';
@@ -40,7 +41,7 @@ const getRequestSearchWarehouse = (cityRef, typeOfWarehouseRef, page) => {
     methodProperties: {
       CityRef: cityRef,
       Page: '1',
-      Limit: '50',
+      Limit: PAGE_FROM_REQUEST,
       Language: 'UA',
       TypeOfWarehouseRef: typeOfWarehouseRef,
       // WarehouseId: '',
