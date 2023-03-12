@@ -24,7 +24,7 @@ const SearchWarehouses = ({
         type="text"
         autoComplete="on"
         autoFocus
-        placeholder="Введіть назву відділення"
+        // placeholder="Введіть назву відділення"
         value={searchText}
         onChange={e => onChangeText(e.target.value)}
       />

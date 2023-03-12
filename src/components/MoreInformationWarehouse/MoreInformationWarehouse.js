@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import ScheduleWarehouse from 'components/ScheduleWarehouse/ScheduleWarehouse';
+import { HeaderText, WrapInformation } from './MoreInformationWarehouse.styled';
 
 const MoreInformationWarehouse = ({ warehouse }) => {
   const {
@@ -9,24 +10,38 @@ const MoreInformationWarehouse = ({ warehouse }) => {
     TotalMaxWeightAllowed,
     ReceivingLimitationsOnDimensions: { Width, Height, Length },
     Schedule,
+    Reception,
+    Delivery,
   } = warehouse;
   return (
-    <>
+    <WrapInformation>
       <h3>
         {SettlementTypeDescription} {CityDescription}
       </h3>
       <h4>{Description}</h4>
       <p>
-        <span>Обмеження ваги: </span>
+        <HeaderText>Обмеження ваги: </HeaderText>
         {TotalMaxWeightAllowed === '0'
           ? 'Без обмежень'
           : TotalMaxWeightAllowed + ' кг.'}
       </p>
       <p>
-        Обмеження за габаритами (см): {Width}x{Height}x{Length}
+        <HeaderText>Обмеження за габаритами (см): </HeaderText>
+        {Width}x{Height}x{Length}
       </p>
-      <ScheduleWarehouse schedule={Schedule} />
-    </>
+
+      <ScheduleWarehouse schedule={Schedule}>
+        <HeaderText>Графік роботи:</HeaderText>{' '}
+      </ScheduleWarehouse>
+
+      <ScheduleWarehouse schedule={Reception}>
+        <HeaderText>Графік приймання відправлень</HeaderText>{' '}
+      </ScheduleWarehouse>
+
+      <ScheduleWarehouse schedule={Delivery}>
+        <HeaderText>Графік відправки день в день</HeaderText>{' '}
+      </ScheduleWarehouse>
+    </WrapInformation>
   );
 };
 
@@ -42,6 +57,8 @@ MoreInformationWarehouse.propTypes = {
       Length: PropTypes.number.isRequired,
     }).isRequired,
     Schedule: PropTypes.object.isRequired,
+    Delivery: PropTypes.object.isRequired,
+    Reception: PropTypes.object.isRequired,
   }),
 };
 
