@@ -1,3 +1,4 @@
+import ReactPaginate from 'react-paginate';
 import { PAGE_FROM_REQUEST } from 'helpers/constants';
 
 const Pagination = ({ totalElement, currentPage, handlerChoicePage }) => {
@@ -6,9 +7,17 @@ const Pagination = ({ totalElement, currentPage, handlerChoicePage }) => {
   return (
     <>
       {totalPage > 1 && (
-        <p>
-          current page: {currentPage} total pages: {totalPage}
-        </p>
+        <ReactPaginate
+          className="react-paginate"
+          breakLabel="..."
+          nextLabel="next >"
+          onPageChange={handlerChoicePage}
+          forcePage={currentPage - 1}
+          pageRangeDisplayed={3}
+          pageCount={totalPage}
+          previousLabel="< previous"
+          renderOnZeroPageCount={null}
+        />
       )}
     </>
   );

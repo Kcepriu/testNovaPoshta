@@ -31,15 +31,17 @@ const Warehouses = () => {
     setSelectedCity(city);
     setSearchText('');
     setNameSearchWarehouses('');
+    setCurentPage(1);
   };
 
   const handlerChoiceFilter = ref => {
     setActiveFilter(ref);
     setFilter(ref);
+    setCurentPage(1);
   };
 
-  const handlerPagination = page => {
-    setCurentPage(page);
+  const handlerPagination = ({ selected: page }) => {
+    setCurentPage(page + 1);
   };
 
   return (

@@ -94,6 +94,10 @@ export async function fetchWarehouses({
   page = 1,
   searchText = '',
 }) {
+  console.log(
+    getRequestSearchWarehouse(cityRef, typeOfWarehouseRef, page, searchText)
+  );
+
   const result = await axios.post(
     URL,
     getRequestSearchWarehouse(cityRef, typeOfWarehouseRef, page, searchText),

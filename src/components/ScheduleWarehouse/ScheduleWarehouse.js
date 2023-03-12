@@ -1,7 +1,21 @@
 import PropTypes from 'prop-types';
+const DayInUkrainian = {
+  Monday: 'Пн',
+  Tuesday: 'Вт',
+  Wednesday: 'Ср',
+  Thursday: 'Чт',
+  Friday: 'Пт',
+  Saturday: 'Сб',
+  Sunday: 'Нд',
+};
 
 const ScheduleWarehouse = ({ schedule }) => {
-  return <>Графік роботи </>;
+  return (
+    <>
+      Графік роботи
+      {}
+    </>
+  );
 };
 ScheduleWarehouse.propTypes = {
   schedule: PropTypes.exact({
