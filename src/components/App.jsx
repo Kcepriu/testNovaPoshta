@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import Documents from 'pages/Documents/Documents';
 import Warehouses from 'pages/Warehouses/Warehouses';
-import SharedLayout from './SharedLayout/SharedLayout';
+import SharedLayout from '../layout/SharedLayout/SharedLayout';
 import NotFound from '../pages/NotFound/NotFound';
 
 export const App = () => {

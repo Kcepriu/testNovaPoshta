@@ -2,22 +2,29 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import * as Style from 'helpers/constatStyle';
 
+export const SectionPage = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+`;
+
 export const Head = styled.div`
   box-shadow: 0px 3px 10px 5px rgba(135, 124, 124, 0.75);
   margin-bottom: 10px;
 `;
 
 export const Container = styled.div`
-  max-width: ${Style.mobile};
+  width: ${Style.mobile};
   margin: 0 auto;
   padding: 0;
 
   @media screen and (min-width: ${Style.tablet}) {
-    max-width: ${Style.tablet};
+    width: ${Style.tablet};
   }
 
   @media screen and (min-width: ${Style.desktop}) {
-    max-width: ${Style.desktop};
+    width: ${Style.desktop};
   }
 `;
 
