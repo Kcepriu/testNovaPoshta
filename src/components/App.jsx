@@ -1,8 +1,8 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Documents from 'pages/Documents/Documents';
 import Warehouses from 'pages/Warehouses/Warehouses';
 import SharedLayout from '../layout/SharedLayout/SharedLayout';
-import NotFound from '../pages/NotFound/NotFound';
+// import NotFound from '../pages/NotFound/NotFound';
 
 export const App = () => {
   return (
@@ -10,13 +10,12 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Documents />} />
+          <Route path="/documents/:documentId" element={<Documents />} />
           <Route path="/warehouses" element={<Warehouses />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="" replace />} />
+        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </>
   );
-
-  //TODO Треба додати футер і запхаи його вниз. Бо зараз коли нема відділень,
-  //клікаючи по пустоті не закриває вікно пошуку міста
 };
