@@ -1,13 +1,19 @@
 {
   "files": {
-    "main.css": "/testNovaPoshta/static/css/main.7dda8924.css",
-    "main.js": "/testNovaPoshta/static/js/main.e470b8a4.js",
+    "main.css": "/testNovaPoshta/static/css/main.702e6b80.css",
+    "main.js": "/testNovaPoshta/static/js/main.8c2a64a4.js",
+    "static/media/codewars.svg": "/testNovaPoshta/static/media/codewars.4134de9a7fc54cc4548f936f9d91d55f.svg",
+    "static/media/telegram.svg": "/testNovaPoshta/static/media/telegram.71ecbae729e53aa64809188e8198f8d5.svg",
+    "static/media/github.svg": "/testNovaPoshta/static/media/github.ce89c536d7f4e8b54af6c777dd6a2839.svg",
+    "static/media/linkedin.svg": "/testNovaPoshta/static/media/linkedin.a9ba9b803a6009d3a44fff622fcc9818.svg",
     "index.html": "/testNovaPoshta/index.html",
-    "main.7dda8924.css.map": "/testNovaPoshta/static/css/main.7dda8924.css.map",
-    "main.e470b8a4.js.map": "/testNovaPoshta/static/js/main.e470b8a4.js.map"
+    "static/media/smartphone.svg": "/testNovaPoshta/static/media/smartphone.f3ecc5b8ffd6f845617ce3fc30d116d9.svg",
+    "static/media/email.svg": "/testNovaPoshta/static/media/email.a1bf3a9d7a581c1fc8ff06c1ec67c42b.svg",
+    "main.702e6b80.css.map": "/testNovaPoshta/static/css/main.702e6b80.css.map",
+    "main.8c2a64a4.js.map": "/testNovaPoshta/static/js/main.8c2a64a4.js.map"
   },
   "entrypoints": [
-    "static/css/main.7dda8924.css",
-    "static/js/main.e470b8a4.js"
+    "static/css/main.702e6b80.css",
+    "static/js/main.8c2a64a4.js"
   ]
 }
