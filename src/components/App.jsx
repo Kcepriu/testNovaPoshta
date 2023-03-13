@@ -12,6 +12,7 @@ export const App = () => {
           <Route index element={<Documents />} />
           <Route path="/documents/:documentId" element={<Documents />} />
           <Route path="/warehouses" element={<Warehouses />} />
+          <Route path="/warehouses/:cityId" element={<Warehouses />} />
         </Route>
         <Route path="*" element={<Navigate to="" replace />} />
         {/* <Route path="*" element={<NotFound />} /> */}

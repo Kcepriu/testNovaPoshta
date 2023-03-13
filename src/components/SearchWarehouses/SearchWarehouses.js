@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
+import { useSearchParams } from 'react-router-dom';
+
 import { useDebouncedCallback } from 'use-debounce';
 import { Label, Input } from './SearchWarehouses.stylef';
 
-const SearchWarehouses = ({
-  searchText,
-  handlerChangeText,
-  setNameSearchWarehouses,
-}) => {
+const SearchWarehouses = ({ searchText, handlerChangeText }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const debouncedChangeCity = useDebouncedCallback(value => {
-    setNameSearchWarehouses(value);
+    console.log('searchParams', searchParams);
+
+    setSearchParams({ ...searchParams, search: value });
   }, 1000);
 
   const onChangeText = text => {
@@ -35,7 +37,6 @@ const SearchWarehouses = ({
 SearchWarehouses.propTypes = {
   searchText: PropTypes.string.isRequired,
   handlerChangeText: PropTypes.func.isRequired,
-  setNameSearchWarehouses: PropTypes.func.isRequired,
 };
 
 export default SearchWarehouses;

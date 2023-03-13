@@ -65,7 +65,19 @@ const getRequestWarehouseTypes = () => {
     methodProperties: {},
   };
 };
-//getWarehouseTypes
+
+const getRequestCity = cityRef => {
+  return {
+    apiKey: KEY,
+    modelName: 'Address',
+    calledMethod: 'getCities',
+    methodProperties: {
+      Ref: cityRef,
+      Page: '1',
+      Limit: '20',
+    },
+  };
+};
 
 export async function fetchInformationDocument(controller, numberDocument) {
   const result = await axios.post(
@@ -94,10 +106,6 @@ export async function fetchWarehouses({
   page = 1,
   searchText = '',
 }) {
-  console.log(
-    getRequestSearchWarehouse(cityRef, typeOfWarehouseRef, page, searchText)
-  );
-
   const result = await axios.post(
     URL,
     getRequestSearchWarehouse(cityRef, typeOfWarehouseRef, page, searchText),
@@ -111,6 +119,14 @@ export async function fetchWarehouses({
 
 export async function getWarehouseTypes(controller) {
   const result = await axios.post(URL, getRequestWarehouseTypes(), {
+    signal: controller.signal,
+  });
+
+  return result;
+}
+
+export async function fetchNameCity(controller, cityRef) {
+  const result = await axios.post(URL, getRequestCity(cityRef), {
     signal: controller.signal,
   });
 

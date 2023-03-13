@@ -1,8 +1,14 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+
 import { fetchWarehouses } from 'servises/apiNovaPoshta';
+import useNameCity from './useNameCity';
 
 const useWarehouses = () => {
-  const [selectedCity, setSelectedCity] = useState();
+  const [searchParams] = useSearchParams();
+
+  const [selectedCity] = useNameCity();
+
   const [foundWarehouses, setFoundWarehouses] = useState([]);
 
   const [totalWarehouses, setTotalWarehouses] = useState(0);
@@ -14,6 +20,22 @@ const useWarehouses = () => {
   const [activeFilter, setActiveFilter] = useState('');
 
   const [nameSearchWarehouses, setNameSearchWarehouses] = useState('');
+
+  const page = searchParams.get('page');
+  const search = searchParams.get('search');
+  const filter = searchParams.get('filter');
+
+  useEffect(() => {
+    setCurentPage(page ? page : '1');
+  }, [page]);
+
+  useEffect(() => {
+    setNameSearchWarehouses(search);
+  }, [search]);
+
+  useEffect(() => {
+    setActiveFilter(filter);
+  }, [filter]);
 
   useEffect(() => {
     //При зміні city  знайти список точок відправлення
@@ -42,15 +64,11 @@ const useWarehouses = () => {
           return;
         }
 
-        if (curentPage === 1) {
-          setFoundWarehouses(response.data);
-        } else {
-          setFoundWarehouses(prev => [...prev, ...response.data]);
-        }
-
+        setFoundWarehouses(response.data);
         setTotalWarehouses(response.info.totalCount);
       } catch (Error) {
-        console.log('Error fetch Warehouses', Error);
+        if (Error.code !== 'ERR_CANCELED')
+          console.log('Error fetch Warehouses', Error);
       } finally {
         setIsLoader(false);
       }
@@ -69,10 +87,7 @@ const useWarehouses = () => {
     isLoader,
     totalWarehouses,
     curentPage,
-    setCurentPage,
-    setSelectedCity,
     setActiveFilter,
-    setNameSearchWarehouses,
   ];
 };
 

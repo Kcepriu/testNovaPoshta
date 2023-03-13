@@ -24,7 +24,8 @@ const useSearchCity = () => {
         }
         setFoundCities(response.data[0].Addresses);
       } catch (Error) {
-        console.log('Error fetch foud city', Error);
+        if (Error.code !== 'ERR_CANCELED')
+          console.log('Error fetch foud city', Error);
       } finally {
         setIsLoader(false);
       }

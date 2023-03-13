@@ -3,7 +3,6 @@ import { getWarehouseTypes } from 'servises/apiNovaPoshta';
 
 const useFilter = () => {
   const [filters, setFilters] = useState([]);
-  const [activeFilter, setActiveFilter] = useState('');
   const [isLoader, setIsLoader] = useState(false);
 
   useEffect(() => {
@@ -21,7 +20,8 @@ const useFilter = () => {
 
         setFilters(response.data);
       } catch (Error) {
-        console.log('Error fetch filters', Error);
+        if (Error.code !== 'ERR_CANCELED')
+          console.log('Error fetch filters', Error);
       } finally {
         setIsLoader(false);
       }
@@ -34,7 +34,7 @@ const useFilter = () => {
     };
   }, []);
 
-  return [filters, activeFilter, isLoader, setActiveFilter];
+  return [filters, isLoader];
 };
 
 export default useFilter;

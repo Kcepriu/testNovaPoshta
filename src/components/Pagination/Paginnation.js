@@ -1,8 +1,16 @@
 import ReactPaginate from 'react-paginate';
+import { useSearchParams } from 'react-router-dom';
+
 import { PAGE_FROM_REQUEST } from 'helpers/constants';
 
-const Pagination = ({ totalElement, currentPage, handlerChoicePage }) => {
+const Pagination = ({ totalElement, currentPage }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const totalPage = Math.ceil(totalElement / PAGE_FROM_REQUEST);
+
+  const handlerChoicePage = ({ selected: page }) => {
+    setSearchParams({ ...searchParams, page: page + 1 });
+  };
 
   return (
     <>

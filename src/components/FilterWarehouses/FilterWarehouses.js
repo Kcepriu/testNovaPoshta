@@ -1,8 +1,16 @@
 import PropTypes from 'prop-types';
+import { useSearchParams } from 'react-router-dom';
 
 import { Filter, ItemFilter } from './FilterWarehouses.styled';
 
-const FilterWarehouses = ({ filters, activeFilter, handlerChoiceFilter }) => {
+const FilterWarehouses = ({ filters }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const activeFilter = searchParams.get('filter');
+
+  const handlerChoiceFilter = Ref => {
+    setSearchParams({ ...searchParams, filter: Ref });
+  };
   return (
     <Filter>
       <ItemFilter
@@ -34,8 +42,6 @@ FilterWarehouses.propTypes = {
       Description: PropTypes.string.isRequired,
     }).isRequired
   ).isRequired,
-  activeFilter: PropTypes.string.isRequired,
-  handlerChoiceFilter: PropTypes.func.isRequired,
 };
 
 export default FilterWarehouses;
