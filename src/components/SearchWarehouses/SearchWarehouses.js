@@ -18,7 +18,7 @@ const SearchWarehouses = ({
 
   return (
     <Label>
-      Пошук по назві:
+      Пошук відділення по назві:
       <Input
         name="nameWarehouses"
         type="text"

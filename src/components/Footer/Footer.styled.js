@@ -44,4 +44,7 @@ export const Contacts = styled.ul`
 export const LinkContact = styled.a`
   color: white;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
