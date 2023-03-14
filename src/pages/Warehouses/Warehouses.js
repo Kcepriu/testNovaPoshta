@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import City from 'components/City/City';
 import FilterWarehouses from 'components/FilterWarehouses/FilterWarehouses';
@@ -22,6 +23,12 @@ const Warehouses = () => {
   ] = useWarehouses();
 
   const [searchText, setSearchText] = useState('');
+  const [searchParams] = useSearchParams();
+  const searchTextFromParams = searchParams.get('search') ?? '';
+
+  useEffect(() => {
+    setSearchText(searchTextFromParams);
+  }, [searchTextFromParams]);
 
   //* Handlers
 

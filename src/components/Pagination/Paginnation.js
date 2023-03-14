@@ -9,7 +9,7 @@ const Pagination = ({ totalElement, currentPage }) => {
   const totalPage = Math.ceil(totalElement / PAGE_FROM_REQUEST);
 
   const handlerChoicePage = ({ selected: page }) => {
-    setSearchParams({ ...searchParams, page: page + 1 });
+    setSearchParams({ ...Object.fromEntries(searchParams), page: page + 1 });
   };
 
   return (

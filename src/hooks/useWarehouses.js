@@ -21,19 +21,21 @@ const useWarehouses = () => {
 
   const [nameSearchWarehouses, setNameSearchWarehouses] = useState('');
 
-  const page = searchParams.get('page');
-  const search = searchParams.get('search');
-  const filter = searchParams.get('filter');
+  const page = searchParams.get('page') ?? 1;
+  const search = searchParams.get('search') ?? '';
+  const filter = searchParams.get('filter') ?? '';
 
   useEffect(() => {
-    setCurentPage(page ? page : '1');
+    setCurentPage(page);
   }, [page]);
 
   useEffect(() => {
     setNameSearchWarehouses(search);
+    // setCurentPage(1);
   }, [search]);
 
   useEffect(() => {
+    // setCurentPage(1);
     setActiveFilter(filter);
   }, [filter]);
 
@@ -81,14 +83,7 @@ const useWarehouses = () => {
     };
   }, [selectedCity, activeFilter, curentPage, nameSearchWarehouses]);
 
-  return [
-    selectedCity,
-    foundWarehouses,
-    isLoader,
-    totalWarehouses,
-    curentPage,
-    setActiveFilter,
-  ];
+  return [selectedCity, foundWarehouses, isLoader, totalWarehouses, curentPage];
 };
 
 export default useWarehouses;

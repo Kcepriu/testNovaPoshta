@@ -6,10 +6,20 @@ import { Filter, ItemFilter } from './FilterWarehouses.styled';
 const FilterWarehouses = ({ filters }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const activeFilter = searchParams.get('filter');
+  const activeFilter = searchParams.get('filter') ?? '';
 
   const handlerChoiceFilter = Ref => {
-    setSearchParams({ ...searchParams, filter: Ref });
+    const newParams = {
+      ...Object.fromEntries(searchParams),
+      filter: Ref,
+    };
+
+    delete newParams.page;
+
+    if (Ref === '') {
+      delete newParams.filter;
+    }
+    setSearchParams(newParams);
   };
   return (
     <Filter>

@@ -7,10 +7,15 @@ import { Label, Input } from './SearchWarehouses.stylef';
 const SearchWarehouses = ({ searchText, handlerChangeText }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const debouncedChangeCity = useDebouncedCallback(value => {
-    console.log('searchParams', searchParams);
+  const debouncedChangeCity = useDebouncedCallback(search => {
+    const newParams = { ...Object.fromEntries(searchParams), search };
 
-    setSearchParams({ ...searchParams, search: value });
+    delete newParams.page;
+
+    if (search === '') {
+      delete newParams.search;
+    }
+    setSearchParams(newParams);
   }, 1000);
 
   const onChangeText = text => {
