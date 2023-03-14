@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import ScheduleWarehouse from 'components/ScheduleWarehouse/ScheduleWarehouse';
 import { HeaderText, WrapInformation } from './MoreInformationWarehouse.styled';
+import * as Texts from 'helpers/constantText';
 
 const MoreInformationWarehouse = ({ warehouse }) => {
   const {
@@ -20,26 +21,26 @@ const MoreInformationWarehouse = ({ warehouse }) => {
       </h3>
       <h4>{Description}</h4>
       <p>
-        <HeaderText>Обмеження ваги: </HeaderText>
+        <HeaderText>{Texts.weightLimit}: </HeaderText>
         {TotalMaxWeightAllowed === '0'
-          ? 'Без обмежень'
-          : TotalMaxWeightAllowed + ' кг.'}
+          ? Texts.withoutLimits
+          : TotalMaxWeightAllowed + ' ' + Texts.kg}
       </p>
       <p>
-        <HeaderText>Обмеження за габаритами (см): </HeaderText>
+        <HeaderText>{Texts.sizeRestrictions} </HeaderText>
         {Width}x{Height}x{Length}
       </p>
 
       <ScheduleWarehouse schedule={Schedule}>
-        <HeaderText>Графік роботи:</HeaderText>{' '}
+        <HeaderText>{Texts.workSchedule}</HeaderText>{' '}
       </ScheduleWarehouse>
 
       <ScheduleWarehouse schedule={Reception}>
-        <HeaderText>Графік приймання відправлень</HeaderText>{' '}
+        <HeaderText>{Texts.receptionSchedule}</HeaderText>{' '}
       </ScheduleWarehouse>
 
       <ScheduleWarehouse schedule={Delivery}>
-        <HeaderText>Графік відправки день в день</HeaderText>{' '}
+        <HeaderText>{Texts.shippingSchedule}</HeaderText>{' '}
       </ScheduleWarehouse>
     </WrapInformation>
   );

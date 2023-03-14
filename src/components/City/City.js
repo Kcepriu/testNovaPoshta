@@ -18,10 +18,7 @@ const City = ({ city }) => {
   };
   const choiceCity = city => {
     setIsSearch(false);
-    // console.log(city);
     navigate(`/warehouses/${city.ref}`, { replace: true });
-
-    // handlerChoiceCity(city);
   };
 
   return (
@@ -48,7 +45,6 @@ City.propTypes = {
     ref: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   }),
-  // handlerChoiceCity: PropTypes.func.isRequired,
 };
 
 export default City;

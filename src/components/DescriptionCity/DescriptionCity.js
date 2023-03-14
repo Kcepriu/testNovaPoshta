@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
+import { clickChangeCity, clickSelectCity } from 'helpers/constantText';
 
 const DescriptionCity = ({ descriptionCity, showOtherText = true }) => {
-  const otherText = descriptionCity
-    ? 'Натисніть щоб змінити місто'
-    : 'Натисніть щоб вибрати місто';
+  const otherText = descriptionCity ? clickChangeCity : clickSelectCity;
   return (
     <>
       {descriptionCity && <h3>{descriptionCity}</h3>}

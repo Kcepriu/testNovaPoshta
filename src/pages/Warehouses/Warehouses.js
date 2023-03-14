@@ -10,6 +10,7 @@ import Spinner from 'components/Spinner/Spinner';
 import useFilter from 'hooks/useFilter';
 import useWarehouses from 'hooks/useWarehouses';
 import SearchWarehouses from 'components/SearchWarehouses/SearchWarehouses';
+import * as Texts from 'helpers/constantText';
 
 const Warehouses = () => {
   const [filters, isLoaderFilter] = useFilter();
@@ -34,7 +35,7 @@ const Warehouses = () => {
 
   return (
     <>
-      <h2>Список відділень міста:</h2>
+      <h2>{Texts.listDepartments}</h2>
 
       <City city={selectedCity} />
 

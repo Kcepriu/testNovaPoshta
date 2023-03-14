@@ -8,6 +8,8 @@ import { WrapSearchCity, Label, Input } from './SearchCity.styled';
 import useSearchCity from 'hooks/useSearchCity';
 import useCloseSearchCityElement from 'hooks/useCloseSearchCityElement';
 
+import * as Texts from 'helpers/constantText';
+
 const SearchCity = ({
   descriptionCity,
   handlerCloseSearch,
@@ -33,13 +35,13 @@ const SearchCity = ({
         showOtherText={false}
       />
       <Label>
-        Введіть місто:
+        {Texts.inputNameCity}
         <Input
           name="nameCity"
           type="text"
           autoComplete="off"
           autoFocus
-          placeholder="Назва міста"
+          placeholder={Texts.nameCity}
           onChange={e => debouncedChangeCity(e.target.value)}
         />
       </Label>

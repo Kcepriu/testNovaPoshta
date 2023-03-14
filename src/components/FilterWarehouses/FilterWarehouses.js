@@ -1,3 +1,4 @@
+import { filretAll } from 'helpers/constantText';
 import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
 
@@ -27,7 +28,7 @@ const FilterWarehouses = ({ filters }) => {
         className={activeFilter === '' ? 'Active' : ''}
         onClick={() => handlerChoiceFilter('')}
       >
-        Всі
+        {filretAll}
       </ItemFilter>
 
       {filters.map(({ Ref, Description }) => {

@@ -10,6 +10,7 @@ import WarningInformation from 'components/WarningInformation/WarningInformation
 import Spinner from 'components/Spinner/Spinner';
 import { WrapInformation } from './Documents.styled';
 import { addTTN } from 'reduxe/sliceHistoryTTN';
+import * as Texts from 'helpers/constantText';
 
 const regexp = /^\d{14}$/;
 
@@ -39,7 +40,7 @@ const Documents = () => {
     }
 
     if (!regexp.test(numberTTN)) {
-      setWarning('Не вірний формат');
+      setWarning(Texts.invalidFormat);
       return;
     }
 
@@ -54,10 +55,8 @@ const Documents = () => {
           numberTTN
         );
 
-        //!Треба дивитися чи знайшов документ. Якщо ні, то ругнутися і не додавати в історію
-        // Error
         if (!response.success) {
-          setWarning('Не вірний номер документу');
+          setWarning(Texts.invalidNumber);
           return;
         }
 
@@ -66,8 +65,8 @@ const Documents = () => {
         setInformationTTN(response.data[0]);
         // CAtch
       } catch (Error) {
-        setWarning('The service is not available');
-        console.log('Error fetch information TTN', Error);
+        setWarning(Texts.serviceDown);
+        // console.log('Error fetch information TTN', Error);
       } finally {
         setShowLoad(false);
       }

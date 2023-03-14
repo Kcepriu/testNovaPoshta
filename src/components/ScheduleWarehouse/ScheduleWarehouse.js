@@ -1,15 +1,6 @@
 import PropTypes from 'prop-types';
 import { Schedule, ItemSchedule, Day } from './ScheduleWarehouse.styled';
-
-const DayInUkrainian = {
-  Monday: 'Пн',
-  Tuesday: 'Вт',
-  Wednesday: 'Ср',
-  Thursday: 'Чт',
-  Friday: 'Пт',
-  Saturday: 'Сб',
-  Sunday: 'Нд',
-};
+import { dayInUkrainian } from 'helpers/constantText';
 
 const ScheduleWarehouse = ({ schedule, children }) => {
   return (
@@ -19,7 +10,7 @@ const ScheduleWarehouse = ({ schedule, children }) => {
         {Object.keys(schedule).map(key => {
           return (
             <ItemSchedule key={key}>
-              <Day>{DayInUkrainian[key]}</Day> <p>{schedule[key]}</p>
+              <Day>{dayInUkrainian[key]}</Day> <p>{schedule[key]}</p>
             </ItemSchedule>
           );
         })}

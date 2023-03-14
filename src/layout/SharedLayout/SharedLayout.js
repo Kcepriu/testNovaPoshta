@@ -12,6 +12,7 @@ import {
 import Loader from 'components/Loader/Loader';
 import ScrollToTopButton from 'components/ScrollToTopButton/ScrollToTopButton';
 import Footer from 'components/Footer/Footer';
+import * as Texts from 'helpers/constantText';
 
 const SharedLayout = () => {
   return (
@@ -23,9 +24,9 @@ const SharedLayout = () => {
               <Header>
                 <Nav>
                   <Link to="/" end>
-                    Перевірити ТТН
+                    {Texts.verify}
                   </Link>
-                  <Link to="/warehouses">Список відділень</Link>
+                  <Link to="/warehouses">{Texts.departmentsList}</Link>
                 </Nav>
               </Header>
             </Container>

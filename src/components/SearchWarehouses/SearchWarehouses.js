@@ -1,3 +1,4 @@
+import { searchBranch } from 'helpers/constantText';
 import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
 
@@ -25,7 +26,7 @@ const SearchWarehouses = ({ searchText, handlerChangeText }) => {
 
   return (
     <Label>
-      Пошук відділення по назві:
+      {searchBranch}
       <Input
         name="nameWarehouses"
         type="text"

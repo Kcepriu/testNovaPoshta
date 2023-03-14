@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Form, Buttom, Input } from './SearchTTN.styled';
+import * as Texts from 'helpers/constantText';
 
 const SearchTTN = () => {
   const navigate = useNavigate();
@@ -26,20 +27,20 @@ const SearchTTN = () => {
 
   return (
     <>
-      <h2>Пошук накладної</h2>
+      <h2>{Texts.searchInvoice}</h2>
       <Form onSubmit={handlerSubmitForm}>
         <Input
           name="numberTTN"
           type="text"
           autoComplete="on"
           autoFocus
-          placeholder="Введіть номер ТТН"
+          placeholder={Texts.enterNumber}
           // defaultValue={documentId}
           value={numberTTN}
           onChange={handlerChangeInput}
         />
 
-        <Buttom type="submit">Отримати статус</Buttom>
+        <Buttom type="submit">{Texts.getStatus}</Buttom>
       </Form>
     </>
   );

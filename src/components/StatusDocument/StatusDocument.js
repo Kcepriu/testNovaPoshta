@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 import { WrapStatusDocument, BoldText } from './StatusDocument.styled';
+import * as Texts from 'helpers/constantText';
 
 const StatusDocument = ({ informationTTN }) => {
   const { Number, Status, WarehouseSender, WarehouseRecipient } =
@@ -12,13 +13,13 @@ const StatusDocument = ({ informationTTN }) => {
         <>
           <h3>№ {Number}</h3>
           <p>
-            <BoldText>Статус доставки:</BoldText> {Status}
+            <BoldText>{Texts.statusDelivery}</BoldText> {Status}
           </p>
           <p>
-            <BoldText>Відправлено:</BoldText> {WarehouseSender}
+            <BoldText>{Texts.sent}</BoldText> {WarehouseSender}
           </p>
           <p>
-            <BoldText>Отримано:</BoldText> {WarehouseRecipient}
+            <BoldText>{Texts.received}</BoldText> {WarehouseRecipient}
           </p>
         </>
       )}

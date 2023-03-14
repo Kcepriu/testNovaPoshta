@@ -9,7 +9,6 @@ const ItemWarehouses = ({ warehouse }) => {
 
   const toogleMoreInformation = () => {
     setIsMoreInformation(prev => !prev);
-    // console.log(warehouse);
   };
 
   return (
