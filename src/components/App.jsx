@@ -1,12 +1,8 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy } from 'react';
 import SharedLayout from '../layout/SharedLayout/SharedLayout';
-// import Documents from 'pages/Documents/Documents';
-// import Warehouses from 'pages/Warehouses/Warehouses';
-
 const Documents = lazy(() => import('pages/Documents/Documents'));
 const Warehouses = lazy(() => import('pages/Warehouses/Warehouses'));
-// import NotFound from '../pages/NotFound/NotFound';
 
 export const App = () => {
   return (

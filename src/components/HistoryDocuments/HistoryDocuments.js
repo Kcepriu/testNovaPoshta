@@ -1,5 +1,8 @@
-import PropTypes from 'prop-types';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getHistoryTTN } from 'reduxe/selectors';
+import { clearHistory } from 'reduxe/sliceHistoryTTN';
 import {
   WrapHistoryDocuments,
   List,
@@ -8,12 +11,20 @@ import {
 } from './HistoryDocuments.styled';
 import { AiOutlineClear } from 'react-icons/ai';
 
-const HistoryDocuments = ({ historyTTN, handlerClearHistory }) => {
+const HistoryDocuments = () => {
+  const dispatcher = useDispatch();
+  const historyTTN = useSelector(getHistoryTTN);
+
   const navigate = useNavigate();
   const { documentId } = useParams();
 
   const handlerOnClick = numDoc => {
     navigate(`/documents/${numDoc}`);
+  };
+
+  const handlerClearHistory = () => {
+    dispatcher(clearHistory());
+    navigate(`/documents`);
   };
 
   return (
@@ -41,11 +52,6 @@ const HistoryDocuments = ({ historyTTN, handlerClearHistory }) => {
       )}
     </WrapHistoryDocuments>
   );
-};
-
-HistoryDocuments.propTypes = {
-  historyTTN: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  handlerClearHistory: PropTypes.func.isRequired,
 };
 
 export default HistoryDocuments;

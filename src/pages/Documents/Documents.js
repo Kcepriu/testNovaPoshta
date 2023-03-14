@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import SearchTTN from 'components/SearchTTN/SearchTTN';
 import HistoryDocuments from 'components/HistoryDocuments/HistoryDocuments';
@@ -8,16 +9,15 @@ import { fetchInformationDocument } from 'servises/apiNovaPoshta';
 import WarningInformation from 'components/WarningInformation/WarningInformation';
 import Spinner from 'components/Spinner/Spinner';
 import { WrapInformation } from './Documents.styled';
-import useHistory from 'hooks/useHistory';
+import { addTTN } from 'reduxe/sliceHistoryTTN';
 
 const regexp = /^\d{14}$/;
 
 const Documents = () => {
+  const dispatcher = useDispatch();
+
   //number TTN for serch
   const { documentId: numberTTN = '' } = useParams();
-
-  // History found TTN
-  const [historyTTN, setHistoryTTN] = useHistory();
 
   // Information ALL TTN
   const [informationTTN, setInformationTTN] = useState('');
@@ -37,7 +37,6 @@ const Documents = () => {
     if (!numberTTN) {
       return;
     }
-    //todo Верифікувати
 
     if (!regexp.test(numberTTN)) {
       setWarning('Не вірний формат');
@@ -58,15 +57,11 @@ const Documents = () => {
         //!Треба дивитися чи знайшов документ. Якщо ні, то ругнутися і не додавати в історію
         // Error
         if (!response.success) {
-          // setWarning(response.errors[0]);
           setWarning('Не вірний номер документу');
           return;
         }
 
-        setHistoryTTN(prev => {
-          if (prev.includes(numberTTN)) return [...prev];
-          return [numberTTN, ...prev];
-        });
+        dispatcher(addTTN(numberTTN));
 
         setInformationTTN(response.data[0]);
         // CAtch
@@ -79,12 +74,7 @@ const Documents = () => {
     }
 
     fetchInformation();
-  }, [numberTTN, setHistoryTTN]);
-
-  // * Handlers
-  const handlerClearHistory = () => {
-    setHistoryTTN([]);
-  };
+  }, [numberTTN, dispatcher]);
 
   // * Returns
   return (
@@ -95,10 +85,7 @@ const Documents = () => {
 
       <WrapInformation>
         <StatusDocument informationTTN={informationTTN} />
-        <HistoryDocuments
-          historyTTN={historyTTN}
-          handlerClearHistory={handlerClearHistory}
-        />
+        <HistoryDocuments />
       </WrapInformation>
       {showLoad && <Spinner />}
     </>
