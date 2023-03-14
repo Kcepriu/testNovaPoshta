@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   WrapHistoryDocuments,
   List,
@@ -7,12 +8,14 @@ import {
 } from './HistoryDocuments.styled';
 import { AiOutlineClear } from 'react-icons/ai';
 
-const HistoryDocuments = ({
-  historyTTN,
-  activeTTN,
-  handlerOnClick,
-  handlerClearHistory,
-}) => {
+const HistoryDocuments = ({ historyTTN, handlerClearHistory }) => {
+  const navigate = useNavigate();
+  const { documentId } = useParams();
+
+  const handlerOnClick = numDoc => {
+    navigate(`/documents/${numDoc}`);
+  };
+
   return (
     <WrapHistoryDocuments>
       <h2>Історія</h2>
@@ -23,7 +26,7 @@ const HistoryDocuments = ({
               return (
                 <Item
                   key={number}
-                  className={number === activeTTN ? 'Active' : ''}
+                  className={number === documentId ? 'Active' : ''}
                   onClick={() => handlerOnClick(number)}
                 >
                   {number}
@@ -42,7 +45,6 @@ const HistoryDocuments = ({
 
 HistoryDocuments.propTypes = {
   historyTTN: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  handlerOnClick: PropTypes.func.isRequired,
   handlerClearHistory: PropTypes.func.isRequired,
 };
 

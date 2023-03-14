@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 import SearchTTN from 'components/SearchTTN/SearchTTN';
 import HistoryDocuments from 'components/HistoryDocuments/HistoryDocuments';
@@ -9,12 +10,11 @@ import Spinner from 'components/Spinner/Spinner';
 import { WrapInformation } from './Documents.styled';
 import useHistory from 'hooks/useHistory';
 
+const regexp = /^\d{14}$/;
+
 const Documents = () => {
   //number TTN for serch
-  const [numberTTN, setNumberTTN] = useState('');
-
-  //Flag to loading info
-  const [loadInformation, setLoadInformation] = useState(false);
+  const { documentId: numberTTN = '' } = useParams();
 
   // History found TTN
   const [historyTTN, setHistoryTTN] = useHistory();
@@ -32,13 +32,17 @@ const Documents = () => {
     setWarning('');
     setInformationTTN('');
 
-    if (!loadInformation) {
+    if (!numberTTN) {
       return;
     }
+    //todo Верифікувати
 
-    setLoadInformation(false);
+    if (!regexp.test(numberTTN)) {
+      console.log(numberTTN);
+      console.log('ERR');
 
-    if (numberTTN === '') {
+      setWarning('Не вірний формат');
+
       return;
     }
 
@@ -76,25 +80,9 @@ const Documents = () => {
     }
 
     fetchInformation();
-
-    // return () => {
-    //   controller.abort();
-    // };
-  }, [numberTTN, loadInformation, setHistoryTTN]);
+  }, [numberTTN, setHistoryTTN]);
 
   // * Handlers
-
-  const handlerSubmitForm = event => {
-    event.preventDefault();
-    setLoadInformation(true);
-  };
-
-  const handlerClickItemHistory = number => {
-    if (numberTTN === number) return;
-    setNumberTTN(number);
-    setLoadInformation(true);
-  };
-
   const handlerClearHistory = () => {
     setHistoryTTN([]);
   };
@@ -102,11 +90,7 @@ const Documents = () => {
   // * Returns
   return (
     <>
-      <SearchTTN
-        numberTTN={numberTTN}
-        setNumberTTN={setNumberTTN}
-        handlerSubmitForm={handlerSubmitForm}
-      />
+      <SearchTTN />
 
       <WarningInformation information={warning} />
 
@@ -114,8 +98,6 @@ const Documents = () => {
         <StatusDocument informationTTN={informationTTN} />
         <HistoryDocuments
           historyTTN={historyTTN}
-          activeTTN={numberTTN}
-          handlerOnClick={handlerClickItemHistory}
           handlerClearHistory={handlerClearHistory}
         />
       </WrapInformation>

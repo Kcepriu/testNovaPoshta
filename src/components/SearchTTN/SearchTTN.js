@@ -1,13 +1,28 @@
-import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Form, Buttom, Input } from './SearchTTN.styled';
 
-const SearchTTN = ({ numberTTN, setNumberTTN, handlerSubmitForm }) => {
+const SearchTTN = () => {
+  const navigate = useNavigate();
+  const { documentId = '' } = useParams();
+
+  const [numberTTN, setNumberTTN] = useState(documentId);
+
+  useEffect(() => {
+    setNumberTTN(documentId);
+  }, [documentId]);
+
   const handlerChangeInput = evn => {
     setNumberTTN(evn.target.value);
   };
 
-  //^\d{14}$
-  //^[A-Z]{4}\d{10}[A-Z]{3}$
+  const handlerSubmitForm = event => {
+    //^\d{14}$
+    //^[A-Z]{4}\d{10}[A-Z]{3}$
+    event.preventDefault();
+    const numDoc = event.target.elements.numberTTN.value;
+    navigate(`/documents/${numDoc}`);
+  };
 
   return (
     <>
@@ -19,6 +34,7 @@ const SearchTTN = ({ numberTTN, setNumberTTN, handlerSubmitForm }) => {
           autoComplete="on"
           autoFocus
           placeholder="Введіть номер ТТН"
+          // defaultValue={documentId}
           value={numberTTN}
           onChange={handlerChangeInput}
         />
@@ -27,12 +43,6 @@ const SearchTTN = ({ numberTTN, setNumberTTN, handlerSubmitForm }) => {
       </Form>
     </>
   );
-};
-
-SearchTTN.propTypes = {
-  numberTTN: PropTypes.string.isRequired,
-  setNumberTTN: PropTypes.func.isRequired,
-  handlerSubmitForm: PropTypes.func.isRequired,
 };
 
 export default SearchTTN;
