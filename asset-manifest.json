@@ -1,7 +1,12 @@
 {
   "files": {
     "main.css": "/testNovaPoshta/static/css/main.702e6b80.css",
-    "main.js": "/testNovaPoshta/static/js/main.c7d56306.js",
+    "main.js": "/testNovaPoshta/static/js/main.f54ca280.js",
+    "static/js/800.d2a3554a.chunk.js": "/testNovaPoshta/static/js/800.d2a3554a.chunk.js",
+    "static/js/186.b0cbd631.chunk.js": "/testNovaPoshta/static/js/186.b0cbd631.chunk.js",
+    "static/js/279.32ec96ad.chunk.js": "/testNovaPoshta/static/js/279.32ec96ad.chunk.js",
+    "static/js/134.a342b3ad.chunk.js": "/testNovaPoshta/static/js/134.a342b3ad.chunk.js",
+    "static/js/444.09523d1b.chunk.js": "/testNovaPoshta/static/js/444.09523d1b.chunk.js",
     "static/media/codewars.svg": "/testNovaPoshta/static/media/codewars.4134de9a7fc54cc4548f936f9d91d55f.svg",
     "static/media/telegram.svg": "/testNovaPoshta/static/media/telegram.71ecbae729e53aa64809188e8198f8d5.svg",
     "static/media/github.svg": "/testNovaPoshta/static/media/github.ce89c536d7f4e8b54af6c777dd6a2839.svg",
@@ -10,10 +15,15 @@
     "static/media/smartphone.svg": "/testNovaPoshta/static/media/smartphone.f3ecc5b8ffd6f845617ce3fc30d116d9.svg",
     "static/media/email.svg": "/testNovaPoshta/static/media/email.a1bf3a9d7a581c1fc8ff06c1ec67c42b.svg",
     "main.702e6b80.css.map": "/testNovaPoshta/static/css/main.702e6b80.css.map",
-    "main.c7d56306.js.map": "/testNovaPoshta/static/js/main.c7d56306.js.map"
+    "main.f54ca280.js.map": "/testNovaPoshta/static/js/main.f54ca280.js.map",
+    "800.d2a3554a.chunk.js.map": "/testNovaPoshta/static/js/800.d2a3554a.chunk.js.map",
+    "186.b0cbd631.chunk.js.map": "/testNovaPoshta/static/js/186.b0cbd631.chunk.js.map",
+    "279.32ec96ad.chunk.js.map": "/testNovaPoshta/static/js/279.32ec96ad.chunk.js.map",
+    "134.a342b3ad.chunk.js.map": "/testNovaPoshta/static/js/134.a342b3ad.chunk.js.map",
+    "444.09523d1b.chunk.js.map": "/testNovaPoshta/static/js/444.09523d1b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.702e6b80.css",
-    "static/js/main.c7d56306.js"
+    "static/js/main.f54ca280.js"
   ]
 }
