@@ -28,6 +28,8 @@ const Documents = () => {
   //Flag show loader
   const [showLoad, setShowLoad] = useState(false);
 
+  //32154654654564
+
   useEffect(() => {
     setWarning('');
     setInformationTTN('');
@@ -38,11 +40,7 @@ const Documents = () => {
     //todo Верифікувати
 
     if (!regexp.test(numberTTN)) {
-      console.log(numberTTN);
-      console.log('ERR');
-
       setWarning('Не вірний формат');
-
       return;
     }
 
@@ -60,7 +58,8 @@ const Documents = () => {
         //!Треба дивитися чи знайшов документ. Якщо ні, то ругнутися і не додавати в історію
         // Error
         if (!response.success) {
-          setWarning(response.errors[0]);
+          // setWarning(response.errors[0]);
+          setWarning('Не вірний номер документу');
           return;
         }
 
