@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getHistoryTTN } from 'reduxe/selectors';
 import { clearHistory } from 'reduxe/sliceHistoryTTN';
+import useCloseHistory from 'hooks/useCloseHistory';
 import {
   WrapHistoryDocuments,
   FiledHistoryDocuments,
@@ -11,13 +12,19 @@ import {
   Button,
 } from './HistoryDocuments.styled';
 import { AiOutlineClear } from 'react-icons/ai';
+import { useEffect } from 'react';
 
 const HistoryDocuments = ({ className, handlerClichHistory }) => {
   const dispatcher = useDispatch();
   const historyTTN = useSelector(getHistoryTTN);
+  const [isCloseHistory] = useCloseHistory();
 
   const navigate = useNavigate();
   const { documentId } = useParams();
+
+  useEffect(() => {
+    if (isCloseHistory) handlerClichHistory(true);
+  }, [isCloseHistory, handlerClichHistory]);
 
   const handlerOnClick = numDoc => {
     handlerClichHistory(true);

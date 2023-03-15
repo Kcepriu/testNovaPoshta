@@ -8,6 +8,8 @@ export const WrapHistoryDocuments = styled.div`
   min-height: 120px;
   padding: 10px 20px;
 
+  min-height: 150px;
+
   max-height: 250px;
   background: ${Style.backgroundField};
   border: ${Style.borderField};

@@ -24,7 +24,11 @@ const Documents = () => {
 
       <WarningInformation information={warning} />
 
-      <button type="button" onClick={handlerShowHideHistory}>
+      <button
+        type="button"
+        id="buttonHistoryDocuments"
+        onClick={handlerShowHideHistory}
+      >
         Show history
       </button>
 

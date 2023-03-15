@@ -1,18 +1,21 @@
 import { useEffect, useState } from 'react';
 const useCloseHistory = () => {
-  const [isCloseSearch, setIsCloseSearch] = useState(false);
+  const [isCloseHistory, setIsCloseHistory] = useState(false);
 
   useEffect(() => {
     //For close this element
     const handlerKeyDownESC = event => {
+      console.log('ESC');
+
       // key press esc Close modal
-      if (event.key === 'Escape') setIsCloseSearch(true);
+      if (event.key === 'Escape') setIsCloseHistory(true);
     };
 
     const handlerClickBody = event => {
-      if (event.target.closest('#descriptionCity')) return;
-      if (event.target.closest('#searchCity')) return;
-      setIsCloseSearch(true);
+      if (event.target.closest('#historyDocuments')) return;
+      if (event.target.closest('#buttonHistoryDocuments')) return;
+
+      setIsCloseHistory(true);
     };
 
     window.addEventListener('keydown', handlerKeyDownESC);
@@ -23,7 +26,7 @@ const useCloseHistory = () => {
       document.body.removeEventListener('click', handlerClickBody);
     };
   }, []);
-  return [isCloseSearch];
+  return [isCloseHistory];
 };
 
 export default useCloseHistory;
