@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SearchCity from 'components/SearchCity/SearchCity';
 import DescriptionCity from 'components/DescriptionCity/DescriptionCity';
@@ -7,15 +7,22 @@ import { WrapCity, WrapSearchCity, WrapDescriptionCity } from './City.styled';
 
 const City = ({ city }) => {
   const navigate = useNavigate();
-  const [isSearch, setIsSearch] = useState(false);
+  const [isSearch, setIsSearch] = useState();
+
+  useEffect(() => {
+    if (!city) setIsSearch(true);
+  }, [city]);
 
   const handlerStatusIsSearch = (status = null) => {
     if (status === null) {
       setIsSearch(prev => !prev);
+    } else if (!status && !city) {
+      setIsSearch(true);
     } else {
       setIsSearch(status);
     }
   };
+
   const choiceCity = city => {
     setIsSearch(false);
     navigate(`/warehouses/${city.ref}`, { replace: true });

@@ -13,6 +13,7 @@ import { ReactComponent as IconTelegram } from '../../images/telegram.svg';
 import { ReactComponent as IconCodeward } from '../../images/codewars.svg';
 import { ReactComponent as IconGithub } from '../../images/github.svg';
 import { ReactComponent as IconLinkedin } from '../../images/linkedin.svg';
+import IconToButton from 'components/IconToButton/IconToButton';
 
 const Footer = () => {
   return (
@@ -26,7 +27,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer noopener, nofollow"
               >
-                <IconLinkedin width="24" height="24" />
+                <IconToButton nameIcon="icon-linkedin" />
                 Linkedin
               </LinkContact>
             </li>
@@ -36,7 +37,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer noopener, nofollow"
               >
-                <IconGithub width="24" height="24" />
+                <IconToButton nameIcon="icon-github" />
                 GitHub
               </LinkContact>
             </li>
@@ -46,7 +47,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noreferrer noopener, nofollow"
               >
-                <IconCodeward width="24" height="24" />
+                <IconToButton nameIcon="icon-codewars" />
                 Codewars
               </LinkContact>
             </li>
@@ -60,7 +61,7 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer noopener, nofollow"
             >
-              <IconPhone width="16" />
+              <IconToButton nameIcon="icon-smartphone" className="Contacts" />
               +38-097-684-15-77
             </LinkContact>
           </li>
@@ -70,7 +71,7 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer noopener, nofollow"
             >
-              <IconTelegram width="16" />
+              <IconToButton nameIcon="icon-telegram" className="Contacts" />
               @SerhiiKostiuchenko
             </LinkContact>
           </li>
@@ -80,7 +81,7 @@ const Footer = () => {
               target="_blank"
               rel="noreferrer noopener, nofollow"
             >
-              <IconEmail width="16" />
+              <IconToButton nameIcon="icon-email" className="Contacts" />
               serhii.kostuchenko@gmail.com
             </LinkContact>
           </li>
