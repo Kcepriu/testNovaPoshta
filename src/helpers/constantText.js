@@ -1,5 +1,5 @@
-export const clickChangeCity = 'Натисніть щоб змінити місто';
-export const clickSelectCity = 'Натисніть щоб вибрати місто';
+export const clickChangeCity = '--> Натисніть тут щоб змінити місто <--';
+export const clickSelectCity = '--> Натисніть тут щоб вибрати місто <--';
 export const filretAll = 'Всі';
 export const withoutLimits = 'Без обмежень';
 export const kg = 'кг.';
@@ -18,7 +18,7 @@ export const dayInUkrainian = {
   Sunday: 'Нд',
 };
 export const nameCity = 'Назва міста';
-export const inputNameCity = 'Введіть місто:';
+export const inputNameCity = 'Введіть назву міста:';
 export const searchInvoice = 'Пошук накладної';
 export const enterNumber = 'Введіть номер ТТН';
 export const getStatus = 'Отримати статус';

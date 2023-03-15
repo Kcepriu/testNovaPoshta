@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Form, Buttom, Input } from './SearchTTN.styled';
+import IconToButton from 'components/IconToButton/IconToButton';
 import * as Texts from 'helpers/constantText';
 
 const SearchTTN = () => {
@@ -35,12 +36,13 @@ const SearchTTN = () => {
           autoComplete="on"
           autoFocus
           placeholder={Texts.enterNumber}
-          // defaultValue={documentId}
           value={numberTTN}
           onChange={handlerChangeInput}
         />
 
-        <Buttom type="submit">{Texts.getStatus}</Buttom>
+        <Buttom type="submit">
+          <IconToButton nameIcon="icon-search" className="iconSearch" />
+        </Buttom>
       </Form>
     </>
   );

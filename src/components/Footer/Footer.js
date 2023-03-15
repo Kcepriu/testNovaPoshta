@@ -5,21 +5,16 @@ import {
   WrapContacts,
   WrapSocialsContacts,
   LinkContact,
+  TextSocials,
 } from './Footer.styled';
 
-import { ReactComponent as IconEmail } from '../../images/email.svg';
-import { ReactComponent as IconPhone } from '../../images/smartphone.svg';
-import { ReactComponent as IconTelegram } from '../../images/telegram.svg';
-import { ReactComponent as IconCodeward } from '../../images/codewars.svg';
-import { ReactComponent as IconGithub } from '../../images/github.svg';
-import { ReactComponent as IconLinkedin } from '../../images/linkedin.svg';
 import IconToButton from 'components/IconToButton/IconToButton';
 
 const Footer = () => {
   return (
     <FooterPage>
       <WrapContacts>
-        <WrapSocialsContacts>
+        <WrapSocialsContacts className="TEST">
           <SocialsContacts>
             <li>
               <LinkContact
@@ -28,7 +23,7 @@ const Footer = () => {
                 rel="noreferrer noopener, nofollow"
               >
                 <IconToButton nameIcon="icon-linkedin" />
-                Linkedin
+                <TextSocials>Linkedin</TextSocials>
               </LinkContact>
             </li>
             <li>
@@ -38,7 +33,7 @@ const Footer = () => {
                 rel="noreferrer noopener, nofollow"
               >
                 <IconToButton nameIcon="icon-github" />
-                GitHub
+                <TextSocials>GitHub</TextSocials>
               </LinkContact>
             </li>
             <li>
@@ -48,7 +43,7 @@ const Footer = () => {
                 rel="noreferrer noopener, nofollow"
               >
                 <IconToButton nameIcon="icon-codewars" />
-                Codewars
+                <TextSocials>Codewars</TextSocials>
               </LinkContact>
             </li>
           </SocialsContacts>

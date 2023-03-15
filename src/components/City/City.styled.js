@@ -19,6 +19,4 @@ export const WrapSearchCity = styled.div`
   left: 0;
   width: 450px;
   background-color: white;
-
-  outline: 1px solid red;
 `;

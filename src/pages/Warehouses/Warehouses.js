@@ -39,14 +39,16 @@ const Warehouses = () => {
 
       <City city={selectedCity} />
 
+      {selectedCity && filters.length > 0 && (
+        <FilterWarehouses filters={filters} />
+      )}
+
       {selectedCity && (
         <SearchWarehouses
           searchText={searchText}
           handlerChangeText={setSearchText}
         />
       )}
-
-      {filters.length > 0 && <FilterWarehouses filters={filters} />}
 
       {foundWarehouses.length > 0 && (
         <ListWarehouses foundWarehouses={foundWarehouses} />

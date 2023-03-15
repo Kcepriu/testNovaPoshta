@@ -1,21 +1,47 @@
-const { default: styled } = require('styled-components');
+import styled from 'styled-components';
+import * as Style from 'helpers/constatStyle';
 
 export const Filter = styled.ul`
-  margin-top: 20px;
+  display: flex;
+
+  margin-top: 5px;
+  margin-bottom: 10px;
   display: flex;
   gap: 10px;
 
   list-style: none;
+  @media screen and (max-width: ${Style.tablet}) {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 `;
 
 export const ItemFilter = styled.li`
-  border: 1px solid grey;
-  border-radius: 10px;
-  padding: 4px 4px;
+  display: flex;
+  align-items: center;
+
+  padding: 4px 8px;
+  text-align: center;
+  vertical-align: center;
+
+  background: ${Style.backgroundField};
+  border: ${Style.borderField};
+
+  border-radius: ${Style.borderRadiusField};
+
   cursor: pointer;
 
-  &:hover,
+  @media screen and (max-width: ${Style.desktop}) {
+    padding: 4px 8px;
+  }
+
+  &:hover {
+    color: ${Style.hoverColor};
+    border-color: ${Style.hoverColor};
+  }
+
   &.Active {
-    background-color: azure;
+    color: ${Style.ativeColor};
+    border-color: ${Style.ativeColor};
   }
 `;

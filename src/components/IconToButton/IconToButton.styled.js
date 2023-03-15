@@ -22,6 +22,13 @@ export const Icon = styled.svg`
     height: 16px;
 
     fill: none;
-    /* stroke: #4440f7; */
+  }
+
+  &.iconSearch {
+    margin-left: 0;
+    width: 24px;
+    height: 24px;
+
+    fill: currentColor;
   }
 `;

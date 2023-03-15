@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-
-const useCloseSearchCityElement = () => {
+const useCloseHistory = () => {
   const [isCloseSearch, setIsCloseSearch] = useState(false);
 
   useEffect(() => {
@@ -27,4 +26,4 @@ const useCloseSearchCityElement = () => {
   return [isCloseSearch];
 };
 
-export default useCloseSearchCityElement;
+export default useCloseHistory;

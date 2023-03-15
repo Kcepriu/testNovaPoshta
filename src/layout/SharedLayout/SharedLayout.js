@@ -5,14 +5,12 @@ import {
   SectionPage,
   Container,
   Head,
-  Header,
-  Link,
-  Nav,
+  SectionFooter,
 } from './SharedLayout.styled';
 import Loader from 'components/Loader/Loader';
 import ScrollToTopButton from 'components/ScrollToTopButton/ScrollToTopButton';
 import Footer from 'components/Footer/Footer';
-import * as Texts from 'helpers/constantText';
+import Header from 'components/Header/Header';
 
 const SharedLayout = () => {
   return (
@@ -21,17 +19,9 @@ const SharedLayout = () => {
         <div>
           <Head>
             <Container>
-              <Header>
-                <Nav>
-                  <Link to="/" end>
-                    {Texts.verify}
-                  </Link>
-                  <Link to="/warehouses">{Texts.departmentsList}</Link>
-                </Nav>
-              </Header>
+              <Header />
             </Container>
           </Head>
-
           <Container>
             <Suspense fallback={<Loader />}>
               <Outlet />
@@ -39,10 +29,11 @@ const SharedLayout = () => {
             </Suspense>
           </Container>
         </div>
-
-        <Container>
-          <Footer />
-        </Container>
+        <SectionFooter>
+          <Container>
+            <Footer />
+          </Container>
+        </SectionFooter>
       </SectionPage>
     </>
   );

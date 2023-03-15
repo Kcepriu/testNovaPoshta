@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import * as Style from 'helpers/constatStyle';
 
 export const WrapStatusDocument = styled.div`
   min-width: 30%;
@@ -6,8 +7,12 @@ export const WrapStatusDocument = styled.div`
   padding: 10px 20px;
 
   flex-grow: 1;
-  border: 1px solid gray;
-  border-radius: 20px;
+
+  background: ${Style.backgroundField};
+  border: ${Style.borderField};
+  /* внутренняя тень */
+  box-shadow: ${Style.boxShadowField};
+  border-radius: ${Style.borderRadiusField};
 `;
 
 export const BoldText = styled.span`

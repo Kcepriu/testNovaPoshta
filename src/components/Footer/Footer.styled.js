@@ -2,21 +2,17 @@ import styled from 'styled-components';
 import * as Style from 'helpers/constatStyle';
 
 export const FooterPage = styled.div`
-  /* margin-top: 60px; */
-  display: block;
   width: 100%;
+  max-width: 100%;
   min-height: 60px;
-
   background-color: ${Style.backgroundColorFooter};
   color: white;
-  box-shadow: ${Style.boxShadowFooter};
 `;
 
 export const WrapContacts = styled.div`
   display: flex;
   justify-content: right;
   align-items: center;
-  width: 100%;
   padding: 8px;
 
   font-size: 16px;
@@ -33,6 +29,10 @@ export const SocialsContacts = styled.ul`
   flex-direction: column;
   list-style: none;
   gap: 5px;
+
+  @media screen and (max-width: 390px) {
+    align-items: center;
+  }
 
   @media screen and (min-width: ${Style.tablet}) {
     flex-direction: row;
@@ -58,6 +58,11 @@ export const LinkContact = styled.a`
   align-items: center;
   gap: 5px;
   &:hover {
-    color: ${Style.hoverColor};
+    color: ${Style.ativeColor};
+  }
+`;
+export const TextSocials = styled.span`
+  @media screen and (max-width: 390px) {
+    display: none;
   }
 `;
