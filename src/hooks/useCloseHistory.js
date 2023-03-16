@@ -5,8 +5,6 @@ const useCloseHistory = () => {
   useEffect(() => {
     //For close this element
     const handlerKeyDownESC = event => {
-      console.log('ESC');
-
       // key press esc Close modal
       if (event.key === 'Escape') setIsCloseHistory(prev => !prev);
     };
