@@ -1,29 +1,24 @@
 {
   "files": {
-    "main.css": "/testNovaPoshta/static/css/main.702e6b80.css",
-    "main.js": "/testNovaPoshta/static/js/main.8453f542.js",
-    "static/js/800.7b0ae582.chunk.js": "/testNovaPoshta/static/js/800.7b0ae582.chunk.js",
-    "static/js/186.79d0204c.chunk.js": "/testNovaPoshta/static/js/186.79d0204c.chunk.js",
+    "main.css": "/testNovaPoshta/static/css/main.4f0960e6.css",
+    "main.js": "/testNovaPoshta/static/js/main.b9ea9502.js",
+    "static/js/157.5994255b.chunk.js": "/testNovaPoshta/static/js/157.5994255b.chunk.js",
+    "static/js/888.3da14c4e.chunk.js": "/testNovaPoshta/static/js/888.3da14c4e.chunk.js",
     "static/js/279.32ec96ad.chunk.js": "/testNovaPoshta/static/js/279.32ec96ad.chunk.js",
-    "static/js/134.a342b3ad.chunk.js": "/testNovaPoshta/static/js/134.a342b3ad.chunk.js",
+    "static/js/299.668f3785.chunk.js": "/testNovaPoshta/static/js/299.668f3785.chunk.js",
     "static/js/444.09523d1b.chunk.js": "/testNovaPoshta/static/js/444.09523d1b.chunk.js",
-    "static/media/codewars.svg": "/testNovaPoshta/static/media/codewars.4134de9a7fc54cc4548f936f9d91d55f.svg",
-    "static/media/telegram.svg": "/testNovaPoshta/static/media/telegram.71ecbae729e53aa64809188e8198f8d5.svg",
-    "static/media/github.svg": "/testNovaPoshta/static/media/github.ce89c536d7f4e8b54af6c777dd6a2839.svg",
-    "static/media/linkedin.svg": "/testNovaPoshta/static/media/linkedin.a9ba9b803a6009d3a44fff622fcc9818.svg",
+    "static/media/iconsSocials.svg": "/testNovaPoshta/static/media/iconsSocials.383057fcb3e6fc8b126726b7f72a23aa.svg",
     "index.html": "/testNovaPoshta/index.html",
-    "static/media/smartphone.svg": "/testNovaPoshta/static/media/smartphone.f3ecc5b8ffd6f845617ce3fc30d116d9.svg",
-    "static/media/email.svg": "/testNovaPoshta/static/media/email.a1bf3a9d7a581c1fc8ff06c1ec67c42b.svg",
-    "main.702e6b80.css.map": "/testNovaPoshta/static/css/main.702e6b80.css.map",
-    "main.8453f542.js.map": "/testNovaPoshta/static/js/main.8453f542.js.map",
-    "800.7b0ae582.chunk.js.map": "/testNovaPoshta/static/js/800.7b0ae582.chunk.js.map",
-    "186.79d0204c.chunk.js.map": "/testNovaPoshta/static/js/186.79d0204c.chunk.js.map",
+    "main.4f0960e6.css.map": "/testNovaPoshta/static/css/main.4f0960e6.css.map",
+    "main.b9ea9502.js.map": "/testNovaPoshta/static/js/main.b9ea9502.js.map",
+    "157.5994255b.chunk.js.map": "/testNovaPoshta/static/js/157.5994255b.chunk.js.map",
+    "888.3da14c4e.chunk.js.map": "/testNovaPoshta/static/js/888.3da14c4e.chunk.js.map",
     "279.32ec96ad.chunk.js.map": "/testNovaPoshta/static/js/279.32ec96ad.chunk.js.map",
-    "134.a342b3ad.chunk.js.map": "/testNovaPoshta/static/js/134.a342b3ad.chunk.js.map",
+    "299.668f3785.chunk.js.map": "/testNovaPoshta/static/js/299.668f3785.chunk.js.map",
     "444.09523d1b.chunk.js.map": "/testNovaPoshta/static/js/444.09523d1b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.702e6b80.css",
-    "static/js/main.8453f542.js"
+    "static/css/main.4f0960e6.css",
+    "static/js/main.b9ea9502.js"
   ]
 }
