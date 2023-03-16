@@ -1,36 +1,51 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+import { IoIosHourglass } from 'react-icons/io';
+
 import SearchTTN from 'components/SearchTTN/SearchTTN';
 import HistoryDocuments from 'components/HistoryDocuments/HistoryDocuments';
 import StatusDocument from 'components/StatusDocument/StatusDocument';
 import WarningInformation from 'components/WarningInformation/WarningInformation';
 import Spinner from 'components/Spinner/Spinner';
-import { WrapInformation } from './Documents.styled';
+import {
+  WrapInformation,
+  ButtonShowHistory,
+  WrapSearch,
+} from './Documents.styled';
 import useDocument from 'hooks/useDocument';
+import useCloseHistory from 'hooks/useCloseHistory';
 
 const Documents = () => {
   const [informationTTN, warning, showLoad] = useDocument();
+
+  //Show- hidden history element
   const [hidenHistory, setHidenHistory] = useState(true);
+  const [isCloseHistory] = useCloseHistory();
+
+  useEffect(() => {
+    setHidenHistory(true);
+  }, [isCloseHistory]);
 
   const handlerShowHideHistory = () => {
     setHidenHistory(prev => !prev);
   };
 
-  //32154654654564
-
   // * Returns
   return (
     <>
-      <SearchTTN />
+      <WrapSearch>
+        <SearchTTN />
+        <ButtonShowHistory
+          type="button"
+          id="buttonHistoryDocuments"
+          onClick={handlerShowHideHistory}
+          size="16"
+        >
+          <IoIosHourglass />
+        </ButtonShowHistory>
+      </WrapSearch>
 
       <WarningInformation information={warning} />
-
-      <button
-        type="button"
-        id="buttonHistoryDocuments"
-        onClick={handlerShowHideHistory}
-      >
-        Show history
-      </button>
 
       <WrapInformation>
         <StatusDocument informationTTN={informationTTN} />

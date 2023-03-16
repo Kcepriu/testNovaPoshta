@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getHistoryTTN } from 'reduxe/selectors';
 import { clearHistory } from 'reduxe/sliceHistoryTTN';
-import useCloseHistory from 'hooks/useCloseHistory';
+import { urlDocuments } from 'helpers/constatnRoutes';
 import {
   WrapHistoryDocuments,
   FiledHistoryDocuments,
@@ -12,28 +13,22 @@ import {
   Button,
 } from './HistoryDocuments.styled';
 import { AiOutlineClear } from 'react-icons/ai';
-import { useEffect } from 'react';
 
 const HistoryDocuments = ({ className, handlerClichHistory }) => {
   const dispatcher = useDispatch();
   const historyTTN = useSelector(getHistoryTTN);
-  const [isCloseHistory] = useCloseHistory();
 
   const navigate = useNavigate();
   const { documentId } = useParams();
 
-  useEffect(() => {
-    if (isCloseHistory) handlerClichHistory(true);
-  }, [isCloseHistory, handlerClichHistory]);
-
   const handlerOnClick = numDoc => {
+    navigate(`${urlDocuments}/${numDoc}`);
     handlerClichHistory(true);
-    navigate(`/documents/${numDoc}`);
   };
 
   const handlerClearHistory = () => {
     dispatcher(clearHistory());
-    navigate(`/documents`);
+    navigate(`${urlDocuments}`);
   };
 
   return (
@@ -63,6 +58,10 @@ const HistoryDocuments = ({ className, handlerClichHistory }) => {
       </FiledHistoryDocuments>
     </WrapHistoryDocuments>
   );
+};
+HistoryDocuments.propTypes = {
+  className: PropTypes.string.isRequired,
+  handlerClichHistory: PropTypes.func.isRequired,
 };
 
 export default HistoryDocuments;

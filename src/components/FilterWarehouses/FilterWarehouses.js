@@ -22,6 +22,7 @@ const FilterWarehouses = ({ filters }) => {
     }
     setSearchParams(newParams);
   };
+
   return (
     <Filter>
       <ItemFilter

@@ -14,6 +14,9 @@ export const Filter = styled.ul`
     flex-wrap: wrap;
     justify-content: space-between;
   }
+  @media screen and (max-width: ${Style.tablet}) {
+    display: none;
+  }
 `;
 
 export const ItemFilter = styled.li`

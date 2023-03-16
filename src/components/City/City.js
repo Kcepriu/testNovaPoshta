@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchCity from 'components/SearchCity/SearchCity';
 import DescriptionCity from 'components/DescriptionCity/DescriptionCity';
 import { WrapCity, WrapSearchCity, WrapDescriptionCity } from './City.styled';
+import { urlWarehouses } from 'helpers/constatnRoutes';
 
 const City = ({ city }) => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const City = ({ city }) => {
 
   const choiceCity = city => {
     setIsSearch(false);
-    navigate(`/warehouses/${city.ref}`, { replace: true });
+    navigate(`${urlWarehouses}/${city.ref}`, { replace: true });
   };
 
   return (

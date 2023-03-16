@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import * as Style from 'helpers/constatStyle';
 
 export const Button = styled.button`
   position: fixed;
@@ -10,7 +11,10 @@ export const Button = styled.button`
   cursor: pointer;
 
   border-radius: 50%;
-  background-color: gray;
+  background-color: ${Style.backgroundField};
+  border: ${Style.borderField};
+  box-shadow: ${Style.boxShadowField};
+
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -18,5 +22,9 @@ export const Button = styled.button`
   &.visible {
     opacity: 1;
     visibility: visible;
+  }
+
+  &:hover {
+    background-color: ${Style.hoverColor};
   }
 `;

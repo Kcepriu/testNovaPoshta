@@ -32,3 +32,5 @@ export const invalidFormat = 'Не вірний формат';
 export const invalidNumber = 'Не вірний номер документу';
 export const serviceDown = 'Сервіс тимчасово не працює';
 export const listDepartments = 'Список відділень міста:';
+export const showHistory = 'Позаказати історію';
+export const hideHistory = 'Сховати історію';

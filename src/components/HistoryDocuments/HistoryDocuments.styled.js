@@ -21,6 +21,8 @@ export const WrapHistoryDocuments = styled.div`
     position: absolute;
     top: 0;
     right: 0;
+    border-color: ${Style.ativeColor};
+    min-height: 250px;
 
     &.hiden {
       position: absolute;
@@ -66,7 +68,7 @@ export const Item = styled.li`
 
 export const Button = styled.button`
   position: absolute;
-  top: 8px;
+  top: 16px;
   right: 8px;
   padding: 1px;
   background-color: transparent;

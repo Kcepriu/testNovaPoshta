@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import { clickChangeCity, clickSelectCity } from 'helpers/constantText';
+import { OtherText } from './DescriptionCity.styled';
 
 const DescriptionCity = ({ descriptionCity, showOtherText = true }) => {
   const otherText = descriptionCity ? clickChangeCity : clickSelectCity;
   return (
     <>
       {descriptionCity && <h3>{descriptionCity}</h3>}
-      {showOtherText && <p>{otherText}</p>}
+      {showOtherText && <OtherText>{otherText}</OtherText>}
     </>
   );
 };

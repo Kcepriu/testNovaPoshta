@@ -1,7 +1,7 @@
-import ReactPaginate from 'react-paginate';
 import { useSearchParams } from 'react-router-dom';
 
 import { PAGE_FROM_REQUEST } from 'helpers/constants';
+import { MainPagination } from './Pagination.styled';
 
 const Pagination = ({ totalElement, currentPage }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -15,15 +15,16 @@ const Pagination = ({ totalElement, currentPage }) => {
   return (
     <>
       {totalPage > 1 && (
-        <ReactPaginate
+        <MainPagination
           className="react-paginate"
           breakLabel="..."
-          nextLabel="next >"
+          nextLabel=">"
           onPageChange={handlerChoicePage}
           forcePage={currentPage - 1}
-          pageRangeDisplayed={3}
+          pageRangeDisplayed={2}
+          marginPagesDisplayed={2}
           pageCount={totalPage}
-          previousLabel="< previous"
+          previousLabel="<"
           renderOnZeroPageCount={null}
         />
       )}

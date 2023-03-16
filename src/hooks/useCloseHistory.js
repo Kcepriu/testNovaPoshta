@@ -8,14 +8,14 @@ const useCloseHistory = () => {
       console.log('ESC');
 
       // key press esc Close modal
-      if (event.key === 'Escape') setIsCloseHistory(true);
+      if (event.key === 'Escape') setIsCloseHistory(prev => !prev);
     };
 
     const handlerClickBody = event => {
       if (event.target.closest('#historyDocuments')) return;
       if (event.target.closest('#buttonHistoryDocuments')) return;
 
-      setIsCloseHistory(true);
+      setIsCloseHistory(prev => !prev);
     };
 
     window.addEventListener('keydown', handlerKeyDownESC);

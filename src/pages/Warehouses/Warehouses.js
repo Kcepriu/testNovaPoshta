@@ -11,6 +11,7 @@ import useFilter from 'hooks/useFilter';
 import useWarehouses from 'hooks/useWarehouses';
 import SearchWarehouses from 'components/SearchWarehouses/SearchWarehouses';
 import * as Texts from 'helpers/constantText';
+import FilterWarehousesSelect from 'components/FilterWarehousesSelect/FilterWarehousesSelect';
 
 const Warehouses = () => {
   const [filters, isLoaderFilter] = useFilter();
@@ -42,6 +43,8 @@ const Warehouses = () => {
       {selectedCity && filters.length > 0 && (
         <FilterWarehouses filters={filters} />
       )}
+
+      <FilterWarehousesSelect filters={filters} />
 
       {selectedCity && (
         <SearchWarehouses
